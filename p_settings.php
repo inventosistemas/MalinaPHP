@@ -3,8 +3,8 @@ if (!defined('HoorayWeb'))
 {
     die;
 }
-define ('URLSite', 'http://malina.inventosistemas.com.br'); 
-define ('URLWebAPI','http://wamalina.inventosistemas.com.br/'); //http://qasloja.hooray.com.br/   http://wamalina.yaapbrasil.com.br/
+define ('URLSite', 'http://localhost:8089/'); //http://malina.inventosistemas.com.br
+define ('URLWebAPI', 'http://wmalina.inventosistemas.com.br/');
 
 $endPoint = ['token'           => URLWebAPI . "Token",
             'login'            => URLWebAPI . "v1/login/",
@@ -50,7 +50,7 @@ $endPoint = ['token'           => URLWebAPI . "Token",
             'delcarrinho'      => URLWebAPI . "v1/carrinho/item/{IDItem}/delete/",
             'qtdecarrinho'     => URLWebAPI . "v1/carrinho/item/adicionarquantidade/",
             'addlogincarrinho' => URLWebAPI . "v1/carrinho/adicionarlogin/",
-            'fretecarrinho'    => URLWebAPI . "v1/carrinho/calcularfretemarketplace/",
+            'fretecarrinho'    => URLWebAPI . "v1/carrinho/calcularfrete/",
             'servicoentrega'   => URLWebAPI . "v1/carrinho/obterservicosentregamarketplace/",
             'atualizarfrete'   => URLWebAPI . "v1/carrinho/atualizarservicofrete/",
             'checkout'         => URLWebAPI . "v1/pedido/gravarpedido/",
