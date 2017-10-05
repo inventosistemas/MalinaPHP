@@ -3,7 +3,7 @@ if (!defined('HoorayWeb'))
 {
     die;
 }
-define ('URLSite', 'http://localhost:8089/'); //http://malina.inventosistemas.com.br
+define ('URLSite', 'http://localhost:8089/'); 
 define ('URLWebAPI', 'http://wmalina.inventosistemas.com.br/');
 
 $endPoint = ['token'           => URLWebAPI . "Token",
