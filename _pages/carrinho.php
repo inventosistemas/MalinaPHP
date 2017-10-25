@@ -138,7 +138,7 @@
 							<p class="sub-title">Informe o código</p>
 						</div>
 						<div class="box-form">
-							<input class="textbox" type="text" name="Cupom" id="Cupom" maxlength="5"  /><!--
+							<input class="textbox" type="text" name="Cupom" id="Cupom" maxlength="20"  /><!--
 							--><button type="submit" class="btn">Enviar</button>
 							<i id=""></i>
 						</div>

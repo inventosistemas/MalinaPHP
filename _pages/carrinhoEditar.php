@@ -171,7 +171,7 @@
 			</div><!--
 			--><div class="box-info">
 				<p class="name"><?= $itemFornecedor['ProdutoDescricao'] ?></p>
-				<p class="provider">Vendido e entregue por:</span> <?= $itemFornecedor['Fornecedor'] ?></p>
+				<!--<p class="provider">Vendido e entregue por:</span> <?= $itemFornecedor['Fornecedor'] ?></p> -->
 				<p class="sku">ID SKU:</span> <?= $itemFornecedor['SkuID'] ?></p>
 				<p class="price-unit">Valor unitário: <span><?= formatar_moeda($itemFornecedor['ValorUnit']) ?></span></p>
 			</div>

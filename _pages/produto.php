@@ -146,7 +146,7 @@
 					<p class="brand-p"><strong>Marca:</strong> <span><?= $dadosProduto['Marca']['Descricao'] ?></span></p>
 				<?php endif; ?>
 				<?php if($dadosProduto['Fornecedor']) : ?>
-					<p class="provider-p"><strong>Vendido e entregue por:</strong> <span><?= $dadosProduto['Fornecedor'] ?></span></p>
+					<!--<p class="provider-p"><strong>Vendido e entregue por:</strong> <span><?= $dadosProduto['Fornecedor'] ?></span></p> -->
 				<?php endif; ?>
 				<div class="box-price">
 					<div class="col-xs-6">
