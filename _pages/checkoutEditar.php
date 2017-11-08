@@ -284,12 +284,13 @@
 				"Mes" => ($phpPost['pgFormaPgto'] == "zero") ? $phpPost['pgMedVenc'] : "", 
 				"Ano" => ($phpPost['pgFormaPgto'] == "zero") ? $phpPost['pgAnoVenc'] : "",
 				"CodigoSeguranca" => ($phpPost['pgFormaPgto'] == "zero") ? $phpPost['pgCVC'] : "",
-				"Hash" => ($phpPost['pgFormaPgto'] == "zero") ? $phpPost['pgHash'] : ""
+				"Hash" => ($phpPost['pgFormaPgto'] == "zero") ? $phpPost['pgHash'] : "",
+                                "CodigoRastreio" => ($phpPost['pgFormaPgto'] == "zero") ? $phpPost['FingerPrint'] : ""
 			],
 		];
 
 		$finalizarPedido = sendRest($endPoint['checkout'], $dadosPedido, "POST");
-    
+   
 		if (empty($finalizarPedido['Gravou'])) {
 			echo "!!";
 

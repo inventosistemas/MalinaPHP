@@ -330,9 +330,9 @@ function obterParcelasCartao() {
 										</div>
 									</div>
 									<div class="form-group">
-										<label><input type="checkbox" name="pgSalvarCartao" value="1"> Salvar cartão para a próxima compra!</label>
+									<!--	<label><input type="checkbox" name="pgSalvarCartao" value="1"> Salvar cartão para a próxima compra!</label> -->
 									</div>
-									<i>Para efetuar o pagamento, não há necessidade de salvar seu cartão. Esta função apenas facilita suas próximas compras com toda segurança.</i>                            
+									<!--<i>Para efetuar o pagamento, não há necessidade de salvar seu cartão. Esta função apenas facilita suas próximas compras com toda segurança.</i>  -->
 								</div>
 							</div>
 						</div>
@@ -374,6 +374,7 @@ function obterParcelasCartao() {
 				<input type="hidden" name="postidusuario" id="postidusuario" value="<?= $dadosLogin['ID'] ?>">
 				<input type="hidden" name="postidcarrinho" id="postidcarrinho" value="<?= $dadosLogin['CarrinhoId'] ?>">
 				<input type="hidden" name="pgHash" id="pgHash" value="0">
+                                <input type="hidden" name = "FingerPrint" id="FingerPrint" value="" />
 			</form>
 			<script type="text/javascript">
 				alterarEndCarrinho();
@@ -381,3 +382,14 @@ function obterParcelasCartao() {
 		</div>
 	</div>
 </section>
+<!-- Clear Sale FingerPrint -->
+<script> 
+    (function (a, b, c, d, e, f, g) { 
+        a['CsdpObject'] = e; a[e] = a[e] || function () {
+            (a[e].q = a[e].q || []).push(arguments)
+        }, a[e].l = 1 * new Date(); f = b.createElement(c),
+        g = b.getElementsByTagName(c)[0]; f.async = 1; f.src = d; g.parentNode.insertBefore(f, g)
+    })(window, document, 'script', '//device.clearsale.com.br/p/fp.js', 'csdp');
+    csdp('app', '292d372537'); 
+    csdp('outputsessionid', 'FingerPrint');
+</script>
