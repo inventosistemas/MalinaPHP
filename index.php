@@ -71,7 +71,7 @@
 	<link href="/stylesheets/personalized.css" rel="stylesheet" type="text/css">
 
 	<!-- Load jQuery -->
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
 	<!-- Scripts -->
 	<script src="/javascripts/jquery.maskedinput.js"></script>
