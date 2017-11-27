@@ -72,15 +72,13 @@
 		return false;
 	}
     
-  /**
-	 * Evandro Cupom de desconto teste 09-06-17
-	 */
+	//Cupom
 	var IDParceiro = <?php if (!empty($dadosLogin['ID']) && $dadosLogin['ID'] > 0) { echo $dadosLogin['ID']; } else{ echo 'null'; } ?>;
+
 	function enviarCupom() {
-		console.log('Cupom enviado');
 		var getCupom = $('#Cupom').val();
 		$.ajax({
-			url: '/carrinho/utilizarcupom',
+			url: 'https://' + <?= $URISite ?> + '/v1/carrinho/utilizarcupom',
 			type: 'POST',
 			data: {
 				'CarrinhoID': '<?= $IDCarrinho ?>',
@@ -89,9 +87,13 @@
 			}
 		}).done(function (data) {
 			console.log('Cupom adicionado', data);
+			console.log('cart', <?= $carrinho = getRest(str_replace("{IDCarrinho}", $endPoint['obtercarrinho'])); ?>);
+			return true;
 		}).fail(function (data) {
 			console.log("Erro ao adicionar o cupom", data);
 		});
+
+		return false;
 	}
 </script>
 
@@ -153,9 +155,8 @@
 							<p class="sub-title">Informe o código</p>
 						</div>
 						<div class="box-form">
-							<input class="textbox" type="text" name="Cupom" id="Cupom" maxlength="20"  /><!--
-							--><button type="submit" class="btn">Enviar</button>
-							<i id=""></i>
+							<input class="textbox" type="text" name="Cupom" id="Cupom" maxlength="20" /><!--
+							--><button id="addCupom" type="submit" class="btn">Enviar</button>
 						</div>
 					</form>
 				</div>
