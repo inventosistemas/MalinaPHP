@@ -78,7 +78,7 @@
 	function enviarCupom() {
 		var getCupom = $('#Cupom').val();
 		$.ajax({
-			url: 'https://' + <?= $URISite ?> + '/v1/carrinho/utilizarcupom',
+			url: 'https://<?= $URISite ?>/v1/carrinho/utilizarcupom',
 			type: 'POST',
 			data: {
 				'CarrinhoID': '<?= $IDCarrinho ?>',
