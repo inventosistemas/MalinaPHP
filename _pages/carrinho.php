@@ -87,7 +87,6 @@
 			}
 		}).done(function (data) {
 			console.log('Cupom adicionado', data);
-			console.log('cart', <?= $carrinho = getRest(str_replace("{IDCarrinho}", $endPoint['obtercarrinho'])); ?>);
 			return true;
 		}).fail(function (data) {
 			console.log("Erro ao adicionar o cupom", data);
