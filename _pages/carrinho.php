@@ -46,7 +46,7 @@
 			posttipocarrinho:'<?= md5("pagina") ?>'
 		},
 		function(dataCarrinho) {
-			$('#cartData').htm-(dataCarrinho);
+			$('#cartData').html(dataCarrinho);
 			atualizarFrete();
 		});                
 	}    
@@ -75,8 +75,23 @@
   /**
 	 * Evandro Cupom de desconto teste 09-06-17
 	 */
+	var IDParceiro = <?php if (!empty($dadosLogin['ID']) && $dadosLogin['ID'] > 0) { echo $dadosLogin['ID']; } else{ echo 'null'; } ?>;
 	function enviarCupom() {
-		alert('Cupom enviado');
+		console.log('Cupom enviado');
+		var getCupom = $('#Cupom').val();
+		$.ajax({
+			url: '/carrinho/utilizarcupom',
+			type: 'POST',
+			data: {
+				'CarrinhoID': '<?= $IDCarrinho ?>',
+				'NumeroCupom': getCupom,
+				'ParceiroID': IDParceiro
+			}
+		}).done(function (data) {
+			console.log('Cupom adicionado', data);
+		}).fail(function (data) {
+			console.log("Erro ao adicionar o cupom", data);
+		});
 	}
 </script>
 
