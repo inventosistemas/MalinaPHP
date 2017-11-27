@@ -1,5 +1,5 @@
 <?php
-
+              
 	if (empty($dadosLogin['CarrinhoId'])) {
 		include_once ("/_pages/404.php");
 		die;
@@ -173,10 +173,9 @@ function obterParcelasCartao() {
 
 	function finalizarCompra() {
        //Pegando o Finger Print e inserindo outro input
-        var codigo = document.getElementById("MeuCampoQueReceberaValor").value;
-        document.getElementById("CodRastreio").value = codigo;
+          $("#CodRastreio").val($("#MeuCampoQueReceberaValor").val());
        // fim Finger
-     
+                
 		var formaPgto = $('input[name=pgFormaPgto]:checked', '#chechoutForm').val();
 		var hash;
 		var finalizar = false;
@@ -201,6 +200,7 @@ function obterParcelasCartao() {
 		}
 
 		if (finalizar) {
+                
 			$.post('/_pages/checkoutEditar.php', $("#chechoutForm").serialize(),
 			function(resultadoFinalizarCompra) {
 				if (resultadoFinalizarCompra.substr(0,2) == "!!") {

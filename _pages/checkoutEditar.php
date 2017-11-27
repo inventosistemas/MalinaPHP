@@ -1,5 +1,5 @@
 <?php
-	$phpPost = filter_input_array(INPUT_POST);
+   	$phpPost = filter_input_array(INPUT_POST);
 	define('HoorayWeb', TRUE);
 	include_once ("../p_settings.php");
 
@@ -290,8 +290,7 @@
 			],
 		];
                $finalizarPedido = sendRest($endPoint['checkout'], $dadosPedido, "POST");
-   
-		if (empty($finalizarPedido['Gravou'])) {
+             		if (empty($finalizarPedido['Gravou'])) {
 			echo "!!";
 
 			if (!is_array($finalizarPedido) && !empty($finalizarPedido)) {
