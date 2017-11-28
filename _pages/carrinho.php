@@ -63,13 +63,14 @@
 		$('#atualizandoCEP').html('');
 		return false;
 	}
-    
+
 	//Cupom
 	var IDParceiro = <?php if (!empty($dadosLogin['ID']) && $dadosLogin['ID'] > 0) { echo $dadosLogin['ID']; } else{ echo 'null'; } ?>;
+
 	function enviarCupom() {
 		var getCupom = $('#Cupom').val();
 		$.ajax({
-			url: 'https://<?= $URISite ?>/v1/carrinho/utilizarcupom',
+			url: '<?= URLWebAPI ?>v1/carrinho/utilizarcupom',
 			type: 'POST',
 			data: {
 				'CarrinhoID': '<?= $IDCarrinho ?>',
@@ -78,10 +79,21 @@
 			}
 		}).done(function (data) {
 			console.log('Cupom adicionado', data);
-			return true;
+			if (data.Erro){
+				$('#modal-cupom .info-cupom').empty();
+				$('#modal-cupom .info-cupom').append('<p>' + data.Erro + '</p>');
+				$('#modal-cupom').modal('show');
+			 } else {
+				return true;
+			 }
 		}).fail(function (data) {
-			console.log("Erro ao adicionar o cupom", data);
+			if (data.Erro){
+				$('#modal-cupom .info-cupom').empty();
+				$('#modal-cupom .info-cupom').append('<p>' + data.Erro + '</p>');
+				$('#modal-cupom').modal('show');
+			}
 		});
+
 		return false;
 	}
 </script>
@@ -168,3 +180,20 @@
 	</div>
 <?php } ?>
 <div class="make-space-bet clearfix"></div>
+
+<div class="modal fade" id="modal-cupom" tabindex="-1" role="dialog" aria-labelledby="modal-cupom-box">
+	<div class="modal-dialog modal-sm" role="document">
+		<div class="modal-content modal-carrinho-content">
+			<div class="modal-fechar hidden-xs hidden-sm" data-dismiss="modal" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			</div>
+			<div class="modal-body">
+				<div class="modal-mobile-fechar hidden-lg hidden-md" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></div>
+				<div class="title-modal">
+					<h2>Cupom</h2>
+				</div>
+				<div class="info-cupom"></div>
+			</div>
+		</div>
+	</div>
+</div>
