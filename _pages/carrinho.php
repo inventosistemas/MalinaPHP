@@ -69,32 +69,38 @@
 
 	function enviarCupom() {
 		var getCupom = $('#Cupom').val();
-		$.ajax({
-			url: '<?= URLWebAPI ?>v1/carrinho/utilizarcupom',
-			type: 'POST',
-			data: {
-				'CarrinhoID': '<?= $IDCarrinho ?>',
-				'NumeroCupom': getCupom,
-				'ParceiroID': IDParceiro
-			}
-		}).done(function (data) {
-			console.log('Cupom adicionado', data);
-			if (data.Erro){
-				$('#modal-cupom .info-cupom').empty();
-				$('#modal-cupom .info-cupom').append('<p>' + data.Erro + '</p>');
-				$('#modal-cupom').modal('show');
-			 } else {
-				return true;
-			 }
-		}).fail(function (data) {
-			if (data.Erro){
-				$('#modal-cupom .info-cupom').empty();
-				$('#modal-cupom .info-cupom').append('<p>' + data.Erro + '</p>');
-				$('#modal-cupom').modal('show');
-			}
-		});
-
-		return false;
+		var complete = false;
+		if(!getCupom){
+			$('#modal-cupom .info-cupom').empty();
+			$('#modal-cupom .info-cupom').append('<p>Insira um cupom.</p>');
+			$('#modal-cupom').modal('show');
+		 } else {
+			$.ajax({
+				url: '<?= URLWebAPI ?>v1/carrinho/utilizarcupom',
+				type: 'POST',
+				data: {
+					'CarrinhoID': '<?= $IDCarrinho ?>',
+					'NumeroCupom': getCupom,
+					'ParceiroID': IDParceiro
+				}
+			}).done(function (data) {
+				console.log('Cupom adicionado', data);
+				if (data.Erro){
+					$('#modal-cupom .info-cupom').empty();
+					$('#modal-cupom .info-cupom').append('<p>' + data.Erro + '</p>');
+					$('#modal-cupom').modal('show');
+				 } else {
+					complete = true;
+				 }
+			}).fail(function (data) {
+				if (data.Erro){
+					$('#modal-cupom .info-cupom').empty();
+					$('#modal-cupom .info-cupom').append('<p>' + data.Erro + '</p>');
+					$('#modal-cupom').modal('show');
+				}
+			});
+		 }
+		return complete;
 	}
 </script>
 
