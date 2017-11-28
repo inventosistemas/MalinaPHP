@@ -67,10 +67,10 @@
 	//Cupom
 	var IDParceiro = <?php if (!empty($dadosLogin['ID']) && $dadosLogin['ID'] > 0) { echo $dadosLogin['ID']; } else{ echo 'null'; } ?>;
 
-	function enviarCupom() {
+	//addCupom
+	function enviarCupom(pForm) {
 		var getCupom = $('#Cupom').val();
-		var complete = false;
-		if(!getCupom){
+		if(getCupom != ''){
 			$('#modal-cupom .info-cupom').empty();
 			$('#modal-cupom .info-cupom').append('<p>Insira um cupom.</p>');
 			$('#modal-cupom').modal('show');
@@ -90,7 +90,7 @@
 					$('#modal-cupom .info-cupom').append('<p>' + data.Erro + '</p>');
 					$('#modal-cupom').modal('show');
 				 } else {
-					complete = true;
+					$('#' + pForm).submit();
 				 }
 			}).fail(function (data) {
 				if (data.Erro){
@@ -100,7 +100,7 @@
 				}
 			});
 		 }
-		return complete;
+		return false;
 	}
 </script>
 
@@ -155,7 +155,7 @@
 					</form>
 				</div>
 				<div class="box-coupon">
-					<form name="enviarCupomDesconto" id="enviarCupom" method="post" action="" onsubmit="return enviarCupom();" >
+					<form name="enviarCupomDesconto" id="enviarCupom" method="post" action="" onsubmit="return enviarCupom('enviarCupom');" >
 						<div class="box-title">
 							<p class="title">Cupom de Desconto</p>
 							<p class="sub-title">Informe o código</p>
