@@ -207,7 +207,7 @@
 				<div class="order-total">
 					<p class="t-itens">Itens: <span><?= formatar_moeda($carrinho['SubTotal']) ?></span></p>
 					<p class="t-shipping">Frete: <?= (is_numeric($carrinho['Frete'])) ? formatar_moeda($carrinho['Frete']) : "Não calculado" ?></p>
-					<p class="t-discount">Desconto: <?= formatar_moeda($carrinho['Frete']) ?></p>
+					<p class="t-discount">Desconto: <?= formatar_moeda($carrinho['ValorDesconto']) ?></p>
 					<p class="t-price">Total: <span><?= formatar_moeda($carrinho['Total']) ?></span></p>
 				</div>
 			</div>
