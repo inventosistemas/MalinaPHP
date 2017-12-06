@@ -11,7 +11,7 @@
 			die;        
 		}
 	}
-
+var_dump($carrinho);
 	$esperaResultado = '<div align="center"><span class="fa fa-circle-o-notch fa-spin fa-4x fa-fw"></span></div>';
 
 	$parcelamento = getRest(str_replace(['{IDCarrinho}','{valorCarrinho}'], [$dadosLogin['CarrinhoId'], $carrinho['Total']], $endPoint['parcarrinho']));
@@ -375,6 +375,7 @@ function obterParcelasCartao() {
 							</div>  
 						</div>
 				</div>
+                                <input type="hidden" name="codVoucher" id="codVoucher" value="<?= $carrinho['CodigoVoucher'] ?>">
 				<input type="hidden" name="posttipoedicao" id="posttipoedicao" value="<?= md5("finalizarCompra") ?>">
 				<input type="hidden" name="postidusuario" id="postidusuario" value="<?= $dadosLogin['ID'] ?>">
 				<input type="hidden" name="postidcarrinho" id="postidcarrinho" value="<?= $dadosLogin['CarrinhoId'] ?>">
@@ -382,6 +383,7 @@ function obterParcelasCartao() {
                                 <input type="hidden" name ="CodRastreio" id="CodRastreio" value= "" />
                                 <input type="hidden" id="MeuCampoQueReceberaValor" value="" />
                                 <input type="hidden" name="pgSalvarCartao" id ="pgSalvarCartao" value="1" />
+                               
 			</form>
 			<script type="text/javascript">
 				alterarEndCarrinho();

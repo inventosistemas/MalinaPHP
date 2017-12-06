@@ -138,9 +138,14 @@
 		<div class="col-sm-6">Entrega: </div>
 		<div class="col-sm-6 text-right"><?= (!empty($carrinho['Frete'] && is_numeric($carrinho['Frete']))) ? formatar_moeda($carrinho['Frete']) : formatar_moeda(0) ?></div>
 	</div>
+        
+        <div class="row">
+		<div class="col-sm-6">Desconto Voucher: </div>
+		<div class="col-sm-6 text-right"><?= (!empty($carrinho['ValorDesconto'] && is_numeric($carrinho['ValorDesconto']))) ? formatar_moeda($carrinho['ValorDesconto']) : formatar_moeda(0) ?></div>
+	</div>
 <?php
 	}
-
+      
 	if (!empty($phpPost['posttipoedicao']) && $phpPost['posttipoedicao'] == md5("totalCarrinho")) {
 		$carrinho = getRest(str_replace("{IDCarrinho}", $phpPost['postidcarrinho'], $endPoint['obtercarrinho']));
 
@@ -152,7 +157,7 @@
 
 			$parcelaBoleto = $parcelamentoSubTotal[$indexBoleto];
 
-			$valorTotalCarrinho = $parcelaBoleto['Valor'] + $carrinho['Frete'];
+			$valorTotalCarrinho = ($parcelaBoleto['Valor'] + $carrinho['Frete']) - $carrinho['ValorDesconto'];
 		} else {
 			$valorTotalCarrinho = $carrinho['Total'];
 		}
@@ -277,7 +282,7 @@
 			"ClassificacaoPagto" => 0, // para mkt place, sempre 0 ($phpPost['pgFormaPgto'] == "zero") ? 0 : $phpPost['opNumOpcoes'],
 			"Parcela" => ($phpPost['pgFormaPgto'] == "zero") ? $phpPost['pgParcela'] : "1",
 			"CarrinhoID"  => $phpPost['postidcarrinho'],
-			"CupomDesconto"  => null,
+			"CupomDesconto"  => $phpPost['codVoucher'],
 			"DadosCartao"  => [
 				"Titular" => ($phpPost['pgFormaPgto'] == "zero") ? $phpPost['pgNomeCartao'] : "",
 				"Numero" => ($phpPost['pgFormaPgto'] == "zero") ? str_replace(" ", "", $phpPost['pgNumCartao']) : "",
@@ -289,6 +294,7 @@
                                 "SalvarCartao" => ($phpPost['pgFormaPgto'] == "zero") ? $phpPost['pgSalvarCartao'] : ""
 			],
 		];
+               var_dump($dadosPedido);
                $finalizarPedido = sendRest($endPoint['checkout'], $dadosPedido, "POST");
              		if (empty($finalizarPedido['Gravou'])) {
 			echo "!!";
@@ -341,9 +347,8 @@
 									} else {
 										$parcelas = getRest(str_replace(['{IDCarrinho}','{valorCarrinho}'], [$phpPost['postidcarrinho'], $carrinhoCK['SubTotal']], $endPoint['parcarrinho']));
 										$indexBoleto = array_search("0", array_column($parcelas, 'Numero')); // busca pela parcela 0 (boleto)
-
-										$valorBoleto = $parcelas[$indexBoleto]['Valor'] + $carrinhoCK['Frete'];
-
+                                                                                
+                                                                                $valorBoleto = $parcelas[$indexBoleto]['Valor'] + $carrinhoCK['Frete']- ($carrinhoCK['ValorDesconto'] + $parcelaBoleto['Valor']);
 										echo "<span>Valor total do pedido: " . formatar_moeda($valorBoleto) . "</span>";
 										echo "<div><a href=\"" . $finalizarPedido['RetornoGateway']['Redirect'] . "/print\" target=\"_blank\" class=\"btn btn-lg btn-primary\">Baixar o boleto</a></div>";
 									}

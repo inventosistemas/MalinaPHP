@@ -196,7 +196,7 @@
 			$i ++;
 		}
 	}
-?>
+?><?php var_dump($carrinho); ?>
 	<!-- footer panel -->
 	<div class="panel-footer cart-order">
 		<div class="row">
