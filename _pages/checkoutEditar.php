@@ -70,10 +70,6 @@
 	foreach ((array) $opcoesFornecedor as $opPorFornec) {
 		$i++;
 ?>
-	<p>
-		<a data-toggle="collapse" data-parent="#accordion" href="#opcao-<?= $i ?>"><b class="caret"></b> Carrinho <?= $opPorFornec['NomeFornecedor'] ?></a>
-	</p>
-	<div id="opcao-<?= $i ?>" class="panel-collapse collapse">
 		<ul>
 			<?php
 				$ii = 1;

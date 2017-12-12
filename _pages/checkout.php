@@ -11,7 +11,6 @@
 			die;        
 		}
 	}
-var_dump($carrinho);
 	$esperaResultado = '<div align="center"><span class="fa fa-circle-o-notch fa-spin fa-4x fa-fw"></span></div>';
 
 	$parcelamento = getRest(str_replace(['{IDCarrinho}','{valorCarrinho}'], [$dadosLogin['CarrinhoId'], $carrinho['Total']], $endPoint['parcarrinho']));

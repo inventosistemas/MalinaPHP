@@ -77,7 +77,7 @@
 	<div class="modal-mobile-fechar hidden-lg hidden-md" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></div>
 	<div class="title-modal">
 		<h2>Carrinho</h2>
-	</div>
+	</div> 
 	<div class="cart-preview">
 		<ul>
 			<?php foreach ((array) $carrinho['Itens'] as $itemCarrinho) { ?>
@@ -188,7 +188,20 @@
 		</div>
 		<div class="cart-rt box-value">
 			<p id="totalitem">Total item: <span><?= formatar_moeda($itemFornecedor['ValorTotal']) ?></span></p>
-			<p class="shipping">Frete: <?= (is_numeric($itemFornecedor['ValorFrete'])) ? formatar_moeda($itemFornecedor['ValorFrete']) : "Não calculado" ?></p>
+                        
+                        <?php
+                        $condicao = is_numeric($itemFornecedor['ValorFrete'])? formatar_moeda($itemFornecedor['ValorFrete']) : "Não calculado" ;
+                        if($itemFornecedor['ValorFrete'] == 0 && $condicao <> "Não calculado")
+                        {
+                            $texto = "Frete Grátis: ";
+                            $cor = "color:#ff0000";
+                        }
+                        else 
+                        {
+                            $texto = "Frete: ";
+                        }
+                        ?>
+                        <p class="shipping" style="<?=$cor?>" ><?=$texto ?><?= (is_numeric($itemFornecedor['ValorFrete'])) ? formatar_moeda($itemFornecedor['ValorFrete']) : "Não calculado" ?></p>
 			<p class="time">Previsão de entrega: <?= date_format(date_create($itemFornecedor['DataEntrega']), "d/m/Y") ?></p>
 		</div>
 	</div>
@@ -196,7 +209,7 @@
 			$i ++;
 		}
 	}
-?><?php var_dump($carrinho); ?>
+?>
 	<!-- footer panel -->
 	<div class="panel-footer cart-order">
 		<div class="row">
@@ -206,7 +219,7 @@
 			--><div class="col-xs-12 col-sm-8">
 				<div class="order-total">
 					<p class="t-itens">Itens: <span><?= formatar_moeda($carrinho['SubTotal']) ?></span></p>
-					<p class="t-shipping">Frete: <?= (is_numeric($carrinho['Frete'])) ? formatar_moeda($carrinho['Frete']) : "Não calculado" ?></p>
+					<p class="t-shipping" style="<?=$cor?>" ><?=$texto?><?= (is_numeric($carrinho['Frete'])) ? formatar_moeda($carrinho['Frete']) : "Não calculado" ?></p>
 					<p class="t-discount">Desconto: <?= formatar_moeda($carrinho['ValorDesconto']) ?></p>
 					<p class="t-price">Total: <span><?= formatar_moeda($carrinho['Total']) ?></span></p>
 				</div>

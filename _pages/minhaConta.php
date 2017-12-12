@@ -237,8 +237,7 @@
 			});
 		}
 	</script>
-
-	<!-- My account -->
+      	<!-- My account -->
 	<section class="content-login">
 		<div class="container">
 			<h4 class="title-page">Minha conta</h4>
@@ -530,7 +529,7 @@
 										<label class="control-label col-sm-3">CEP</label>
 										<div class="col-sm-9 col-md-6">
 											<div class="input-group">
-												<input name="endEntCEP" id="endEntCEP" type="text" value="<?= (!empty($enderecoEntrega['CEP'])) ? mascara($enderecoEntrega['CEP'], "#####-###") : "" ?>" class="form-control" required="required"/>
+												<input name="endEntCEP" id="endEntCEP" type="text" maxlength="8" value="<?= (!empty($enderecoEntrega['CEP'])) ? mascara($enderecoEntrega['CEP'], "#####-###") : "" ?>" class="form-control" required="required" placeholder= "00000-000"/>
 												<span class="input-group-addon"><a href="javascript:obterEndereco('entrega')">Buscar endereço</a></span>
 											</div>
 											<span id="resultCEPEntrega"></span>
@@ -1098,8 +1097,14 @@
 				jQuery(function($){
 					$("#cadDtNascimentoMC").mask("99/99/9999");
 					$("#cadTelefoneMC").mask("?(99) 999999999");
-				});
+                                        $("#endPrinCEPMC").mask("99999-999");
+                                        $("#endEntCEP").mask("99999-999");
+                                        $("#endPrinCEP").mask("99999-999");
+                                       
+                                 });
+                                 
 			</script>
+                    
 		</div>
 	</section>
 

@@ -52,7 +52,13 @@
 			$('#cartData').html(dataCarrinho);
 		});                                            
 	</script>    
-
+<script>
+    function proximoCampo(atual,proximo){
+    if(atual.value.length >= atual.maxLength){
+    document.getElementById(proximo).focus();
+    }
+}
+</script>
 	<div class="footer-cart">
 		<div class="container">
 			<div class="inner-ft">
@@ -63,7 +69,7 @@
 							<p class="sub-title">Por favor informe o CEP</p>
 						</div>
 						<div class="box-form">
-							<input class="textbox" type="text" name="CEPCarrinho" id="CEPCarrinho" placeholder="00000" maxlength="5" required="required" /> - <input class="textbox" type="text" name="CEPCompCarrinho" id="CEPCompCarrinho" placeholder="000" maxlength="3" required="required" /><!--
+							<input class="textbox" type="text" name="CEPCarrinho" id="CEPCarrinho" placeholder="00000" maxlength="5" required="required" onkeyup="proximoCampo(this, 'CEPCompCarrinho')" /> - <input class="textbox" type="text" name="CEPCompCarrinho" id="CEPCompCarrinho" placeholder="000" maxlength="3" required="required" /><!--
 							--><button type="submit" class="btn btn-submit">Consultar</button>
 							<i id="atualizandoCEP"></i>
 							<a href="http://www.buscacep.correios.com.br/sistemas/buscacep/BuscaCepEndereco.cfm" target="_blank" class="get-cep">Não sei o meu CEP</a>
@@ -200,7 +206,7 @@
 					if (data.Erro) {
 						$('#modal-cupom .info-cupom').empty();
 						if (data.Mensagem.search(/autenticação/) != -1) {
-							$('#modal-cupom .info-cupom').append('<p>Para validar o cupom é necessário estar logado.<a id="op-lg-md" href="#modal-login" data-toggle="modal">Fazer login</a></p>');
+							$('#modal-cupom .info-cupom').append('<p>Para validar o cupom é necessário estar logado&nbsp.<a id="op-lg-md" href="#modal-login" data-toggle="modal" style="color:#ec0909">&nbspFazer login</a></p>');
 							$('#op-lg-md').bind('click', function () {
 								$('#modal-cupom').modal('hide');
 							});
