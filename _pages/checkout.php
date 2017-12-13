@@ -254,16 +254,14 @@ function obterParcelasCartao() {
 										if (isset($parBoleto) && is_numeric($parBoleto)) {
 											$boletoHabititado = true;
 									?>
-										<div class="form-group">
-											<label><input type="radio" name="pgFormaPgto" id="pgFormaPgto" value="2" onchange="valoresCarrinho();" checked> Boleto Bancário</label>
-										</div>
+										
 									<?php
 										} else {
 											$boletoHabititado = false;
 										}
 									?>
 									<div class="form-group">
-										<label><input type="radio" name="pgFormaPgto" id="pgFormaPgto" value="zero" onchange="valoresCarrinho();" <?= ($boletoHabititado) ? "" : " checked" ?>> Cartão de crédito</label>
+										<label><input type="radio" name="pgFormaPgto" id="pgFormaPgto" value="zero" onchange="valoresCarrinho();" <?= ($boletoHabititado) ? "checked" : "checked" ?>> Cartão de crédito</label>
 									</div>
 									<div class="form-group">
 										<select class="form-control" name="pgBandeira" id="pgBandeira" onchange="obterParcelasCartao();">
@@ -333,6 +331,9 @@ function obterParcelasCartao() {
 											</span>
 										</div>
 									</div>
+                                                                    <div class="form-group">
+											<label><input type="radio" name="pgFormaPgto" id="pgFormaPgto" value="2" onchange="valoresCarrinho();" > Boleto Bancário</label>
+								    </div>
 									<div class="form-group">
 									<!--	<label><input type="checkbox" name="pgSalvarCartao" value="1"> Salvar cartão para a próxima compra!</label> -->
 									</div>
