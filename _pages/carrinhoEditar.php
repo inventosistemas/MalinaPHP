@@ -158,7 +158,7 @@
 
 			foreach ((array) $itensFornecedor as $fornecedor) {
 ?>
-	<div class="panel-heading">Carrinho <?= $fornecedor['Fornecedor'] ?> <span>(<?= count($fornecedor['Itens']) ?> <?= (count($fornecedor['Itens']) > 1) ? "Itens" : "Item" ?>)</span></div>
+	<div class="panel-heading">Carrinho Malina <span>(<?= count($fornecedor['Itens']) ?> <?= (count($fornecedor['Itens']) > 1) ? "Itens" : "Item" ?>)</span></div>
 <?php
 	$i = 0;
 	foreach ((array) $fornecedor['Itens'] as $itemFornecedor) {
@@ -171,7 +171,6 @@
 			</div><!--
 			--><div class="box-info">
 				<p class="name"><?= $itemFornecedor['ProdutoDescricao'] ?></p>
-				<!--<p class="provider">Vendido e entregue por:</span> <?= $itemFornecedor['Fornecedor'] ?></p> -->
 				<p class="sku">ID SKU:</span> <?= $itemFornecedor['SkuID'] ?></p>
 				<p class="price-unit">Valor unitário: <span><?= formatar_moeda($itemFornecedor['ValorUnit']) ?></span></p>
 			</div>

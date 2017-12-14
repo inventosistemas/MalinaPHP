@@ -332,7 +332,7 @@ function obterParcelasCartao() {
 										</div>
 									</div>
                                                                     <div class="form-group">
-											<label><input type="radio" name="pgFormaPgto" id="pgFormaPgto" value="2" onchange="valoresCarrinho();" > Boleto Bancário</label>
+											<label><input type="radio" name="pgFormaPgto" id="pgFormaPgto" value="2" onchange="valoresCarrinho();" > Boleto Bancário com 5% de desconto</label>
 								    </div>
 									<div class="form-group">
 									<!--	<label><input type="checkbox" name="pgSalvarCartao" value="1"> Salvar cartão para a próxima compra!</label> -->
