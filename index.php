@@ -218,10 +218,12 @@
 									<?php
 										$menuSite = getRest($endPoint['menu']);
 										foreach ((array) $menuSite as $secao) :
+                                                                                   
 									?>
 										<li class="ue-list-option">
 											<a href="/secao?id=<?= $secao['SecaoID'] ?>">
-												<span class="icon"><img src="<?= htmlentities($secao['']) ?>"></span>
+                                                                                          
+												<span class="icon"><img src="<?= htmlentities($secao['Imagem']) ?>"></span>
 												<span class="text"><?= htmlentities($secao['Descricao']) ?></span>
 											</a>
 											<?php if($secao['Categorias']) : ?>
