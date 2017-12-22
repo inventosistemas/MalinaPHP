@@ -237,7 +237,16 @@
 			});
 		}
 	</script>
-      	<!-- My account -->
+<!-- Global site tag (gtag.js) - Google Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-73086747-1"></script>
+		<script>
+		  window.dataLayer = window.dataLayer || [];
+		  function gtag(){dataLayer.push(arguments);}
+		  gtag('js', new Date());
+
+		  gtag('config', 'UA-73086747-1');
+		</script>
+	<!-- My account -->
 	<section class="content-login">
 		<div class="container">
 			<h4 class="title-page">Minha conta</h4>
@@ -529,7 +538,7 @@
 										<label class="control-label col-sm-3">CEP</label>
 										<div class="col-sm-9 col-md-6">
 											<div class="input-group">
-												<input name="endEntCEP" id="endEntCEP" type="text" maxlength="8" value="<?= (!empty($enderecoEntrega['CEP'])) ? mascara($enderecoEntrega['CEP'], "#####-###") : "" ?>" class="form-control" required="required" placeholder= "00000-000"/>
+												<input name="endEntCEP" id="endEntCEP" type="text" value="<?= (!empty($enderecoEntrega['CEP'])) ? mascara($enderecoEntrega['CEP'], "#####-###") : "" ?>" class="form-control" required="required"/>
 												<span class="input-group-addon"><a href="javascript:obterEndereco('entrega')">Buscar endereço</a></span>
 											</div>
 											<span id="resultCEPEntrega"></span>
@@ -1097,14 +1106,9 @@
 				jQuery(function($){
 					$("#cadDtNascimentoMC").mask("99/99/9999");
 					$("#cadTelefoneMC").mask("?(99) 999999999");
-                                        $("#endPrinCEPMC").mask("99999-999");
-                                        $("#endEntCEP").mask("99999-999");
-                                        $("#endPrinCEP").mask("99999-999");
-                                       
-                                 });
-                                 
+					$("#endPrinCEPMC").mask("99999-999");
+				});
 			</script>
-                    
 		</div>
 	</section>
 

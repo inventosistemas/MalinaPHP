@@ -69,6 +69,16 @@
 	<link href="/fonts/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 	<link href="/stylesheets/slick.css" rel="stylesheet" type="text/css">
 	<link href="/stylesheets/personalized.css" rel="stylesheet" type="text/css">
+	
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-73086747-1"></script>
+		<script>
+		  window.dataLayer = window.dataLayer || [];
+		  function gtag(){dataLayer.push(arguments);}
+		  gtag('js', new Date());
+
+		  gtag('config', 'UA-73086747-1');
+		</script>
 
 	<!-- Load jQuery -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
@@ -218,11 +228,9 @@
 									<?php
 										$menuSite = getRest($endPoint['menu']);
 										foreach ((array) $menuSite as $secao) :
-                                                                                   
 									?>
 										<li class="ue-list-option">
 											<a href="/secao?id=<?= $secao['SecaoID'] ?>">
-                                                                                          
 												<span class="icon"><img src="<?= htmlentities($secao['Imagem']) ?>"></span>
 												<span class="text"><?= htmlentities($secao['Descricao']) ?></span>
 											</a>

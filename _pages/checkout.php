@@ -11,6 +11,7 @@
 			die;        
 		}
 	}
+
 	$esperaResultado = '<div align="center"><span class="fa fa-circle-o-notch fa-spin fa-4x fa-fw"></span></div>';
 
 	$parcelamento = getRest(str_replace(['{IDCarrinho}','{valorCarrinho}'], [$dadosLogin['CarrinhoId'], $carrinho['Total']], $endPoint['parcarrinho']));
@@ -37,7 +38,15 @@
 		</div>
 	</div>
 </section>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-73086747-1"></script>
+		<script>
+		  window.dataLayer = window.dataLayer || [];
+		  function gtag(){dataLayer.push(arguments);}
+		  gtag('js', new Date());
 
+		  gtag('config', 'UA-73086747-1');
+		</script>
 <script type="text/javascript">
 	$('#checkpointid').html('<div class="circulo"></div><span>Identificação</span>');
 	$('#checkpointendpgto').html('<div class="circulo"></div><span>Endereço e Pagamento</span>');
@@ -221,7 +230,7 @@ function obterParcelasCartao() {
 <section class="ordem">
 	<div class="container">
 		<div id="retornoFinalizarCompra">
-                    <form name="chechoutForm" id="chechoutForm" method="post" action="/checkout" autocomplete="off" onsubmit="false" onclick='pegarCodigoRastreio();'>
+                    <form name="chechoutForm" id="chechoutForm" method="post" action="/checkout" autocomplete="off" onsubmit="false" >
 				<div class="row">
 					<div class="col-md-4">
 						<div class="panel panel-default">
@@ -267,11 +276,14 @@ function obterParcelasCartao() {
 										<select class="form-control" name="pgBandeira" id="pgBandeira" onchange="obterParcelasCartao();">
 											<option value="" disabled selected>Bandeira do cartão</option>
 											<?php
+                                                                                             
 												foreach ((array) $bandeirasCartao as $bandeira) {
 													$descLowerCase = strtolower($bandeira['DescricaoSite']);
+                                                                                                       
 													if (strpos($descLowerCase, "boleto") !== false) continue;
 
 													echo "<option value=\"" . $bandeira['PagamentoMetodoFormaID'] . "\">" . $bandeira['DescricaoSite'] . "</option>";
+                                                                                                        
 												}
 											?>
 										</select>
@@ -331,9 +343,9 @@ function obterParcelasCartao() {
 											</span>
 										</div>
 									</div>
-                                                                    <div class="form-group">
-											<label><input type="radio" name="pgFormaPgto" id="pgFormaPgto" value="2" onchange="valoresCarrinho();" > Boleto Bancário com 5% de desconto</label>
-								    </div>
+									<div class="form-group">
+											<label><input type="radio" name="pgFormaPgto" id="pgFormaPgto" value="2" onchange="valoresCarrinho();"> Boleto Bancário com 5% de desconto</label>
+										</div>
 									<div class="form-group">
 									<!--	<label><input type="checkbox" name="pgSalvarCartao" value="1"> Salvar cartão para a próxima compra!</label> -->
 									</div>
@@ -341,6 +353,7 @@ function obterParcelasCartao() {
 								</div>
 							</div>
 						</div>
+					
 						<div class="col-md-4">
 							<div class="panel panel-default">
 								<div class="panel-heading">4. REVISÃO DO PEDIDO</div>
@@ -375,15 +388,15 @@ function obterParcelasCartao() {
 							</div>  
 						</div>
 				</div>
-                                <input type="hidden" name="codVoucher" id="codVoucher" value="<?= $carrinho['CodigoVoucher'] ?>">
+			
+				<input type="hidden" name="codVoucher" id="codVoucher" value="<?= $carrinho['CodigoVoucher'] ?>">
 				<input type="hidden" name="posttipoedicao" id="posttipoedicao" value="<?= md5("finalizarCompra") ?>">
 				<input type="hidden" name="postidusuario" id="postidusuario" value="<?= $dadosLogin['ID'] ?>">
 				<input type="hidden" name="postidcarrinho" id="postidcarrinho" value="<?= $dadosLogin['CarrinhoId'] ?>">
 				<input type="hidden" name="pgHash" id="pgHash" value="0">
-                                <input type="hidden" name ="CodRastreio" id="CodRastreio" value= "" />
-                                <input type="hidden" id="MeuCampoQueReceberaValor" value="" />
-                                <input type="hidden" name="pgSalvarCartao" id ="pgSalvarCartao" value="1" />
-                               
+                <input type="hidden" name ="CodRastreio" id="CodRastreio" value= "" />
+                <input type="hidden" id="MeuCampoQueReceberaValor" value="" />
+                <input type="hidden" name="pgSalvarCartao" id ="pgSalvarCartao" value="1" />
 			</form>
 			<script type="text/javascript">
 				alterarEndCarrinho();

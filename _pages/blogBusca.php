@@ -11,7 +11,15 @@ $dadosBlog = getRest($endPoint['blog']);
 $termoBuscaURL = trim(str_replace(' ', '%20', $termoBusca));
 $buscaBlog = getRest(str_replace(['{IDBlog}','{termoBusca}'], [$dadosBlog['ID'], $termoBuscaURL], $endPoint['blogbusca']));
 ?>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-73086747-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
+  gtag('config', 'UA-73086747-1');
+</script>
 <div class="blog-wrap clearfix">
 
     <section class="blog">

@@ -15,7 +15,6 @@
 									 . '<div class="cart-rt"></div>'
 									 . '<div class="make-space-bet"></div>'
 									 . '</div>';
-
 	if (!empty($numCarrinho)) {
 		$carrinho = getRest(str_replace("{IDCarrinho}", $numCarrinho, $endPoint['obtercarrinho']));
 	}
@@ -59,6 +58,15 @@
     }
 }
 </script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-73086747-1"></script>
+		<script>
+		  window.dataLayer = window.dataLayer || [];
+		  function gtag(){dataLayer.push(arguments);}
+		  gtag('js', new Date());
+
+		  gtag('config', 'UA-73086747-1');
+		</script>
 	<div class="footer-cart">
 		<div class="container">
 			<div class="inner-ft">
@@ -178,10 +186,8 @@
 		$('#atualizandoCEP').html('');
 		return false;
 	}
-
 	//Cupom
 	var IDParceiro = <?php if (!empty($dadosLogin['ID']) && $dadosLogin['ID'] > 0) { echo $dadosLogin['ID']; } else{ echo 'null'; } ?>;
-
 	//addCupom
 	$('#addCupom').on('click', function (e) {
 		e.preventDefault();

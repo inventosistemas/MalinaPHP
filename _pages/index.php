@@ -61,7 +61,15 @@
 	<!--<link rel="apple-touch-icon" href="images/favicon/apple-touch-icon.png">
 	<link rel="apple-touch-icon" sizes="72x72" href="images/favicon/apple-touch-icon-72x72.png">
 	<link rel="apple-touch-icon" sizes="114x114" href="images/favicon/apple-touch-icon-114x114.png">-->
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-73086747-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
+  gtag('config', 'UA-73086747-1');
+</script>
 	<!-- Styles -->
 	<link href="/stylesheets/bootstrap.min.css" rel="stylesheet" type="text/css" />
 	<link href="/stylesheets/nouislider.min.css" rel="stylesheet" type="text/css" />
@@ -71,7 +79,7 @@
 	<link href="/stylesheets/personalized.css" rel="stylesheet" type="text/css">
 
 	<!-- Load jQuery -->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
 	<!-- Scripts -->
 	<script src="/javascripts/jquery.maskedinput.js"></script>

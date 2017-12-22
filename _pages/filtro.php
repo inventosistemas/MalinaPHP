@@ -60,7 +60,17 @@
 				$soldProd = $produtoBusca['Esgotado'];
 				$promoNew = $produtoBusca['Lancamento'];
 				$promoPercentage = $produtoBusca['PercentualDesconto'];
-?><li class="product-item col-xs-12 col-sm-4 col-lg-3">
+?>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-73086747-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-73086747-1');
+</script>
+<li class="product-item col-xs-12 col-sm-4 col-lg-3">
 	<div class="inner-prod">
 		<figure class="product-img">
 			<a href="/produto?id=<?= $idProd ?>">

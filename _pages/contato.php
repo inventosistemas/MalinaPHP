@@ -10,7 +10,15 @@
 	$dadosCadastrais = getRest(str_replace("{IDParceiro}","1031", $endPoint['dadoscadastrais']));
 	$assuntosContato = getRest($endPoint['assuntoscontato']);
 ?>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-73086747-1"></script>
+		<script>
+		  window.dataLayer = window.dataLayer || [];
+		  function gtag(){dataLayer.push(arguments);}
+		  gtag('js', new Date());
 
+		  gtag('config', 'UA-73086747-1');
+		</script>
 <script type="text/javascript">
 	function enviarContato() {
 	 $('#retornoContato').html('Enviando mensagem...');
@@ -100,7 +108,8 @@
 				</div>
 			</div>
 		</form>
-		<script type="text/javascript">
+	
+	<script type="text/javascript">
 		var meus_campos = {
 				'contEmail': 'email',
 				'contNome': 'nome',
