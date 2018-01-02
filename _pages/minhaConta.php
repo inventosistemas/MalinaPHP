@@ -977,7 +977,7 @@
 								<div class="form-group row">
 									<label class="control-label col-sm-3">Nome</label>
 									<div class="col-sm-9 col-md-6">
-										<input type="text" name="cadNomeMC" id="cadNomeMC" class="form-control" placeholder="Nome" value="<?= (!empty($phpPost['cadNome'])) ? $phpPost['cadNome'] : "" ?>" required="required" />
+										<input type="text" name="cadNomeMC" id="cadNomeMC" class="form-control" placeholder="Nome e sobrenome" value="<?= (!empty($phpPost['cadNome'])) ? $phpPost['cadNome'] : "" ?>" required="required" />
 									</div>
 								</div>                            
 								<div class="form-group row">

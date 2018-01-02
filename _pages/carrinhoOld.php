@@ -1,5 +1,4 @@
 <?php
-
 	if (!empty($dadosLogin['CarrinhoId'])) {
 		$IDCarrinho = $dadosLogin['CarrinhoId'];
 	} elseif (!empty($_SESSION['carrinho'])) {
@@ -7,7 +6,6 @@
 	} else {
 		$IDCarrinho = -1;
 	}    
-
 	$esperaResultado = '<div class="panel-heading">Atualizando seu carrinho...</div>'
 									 . '<div class="row">'
 									 . '<div class="cart-lf"></div>'
@@ -21,7 +19,6 @@
 <script type="text/javascript">
 	function retirarCarrinho(IDProduto) {
 		$('#cartData').html('<?= $esperaResultado ?>');
-
 		$.post('/_pages/carrinhoEditar.php', {
 			postidproduto:IDProduto,
 			postidcarrinho:'<?= $IDCarrinho ?>',
@@ -33,10 +30,8 @@
 			$('#cartData').html(dataCarrinho);
 		});                
 	}
-
 	function atualizarQtde(IDProduto) {
 		var qtdeAlterar = document.getElementById("qtdeItemCarriho" + IDProduto).value;
-
 		$.post('/_pages/carrinhoEditar.php', {
 			postidproduto:IDProduto,
 			postqtdeproduto:qtdeAlterar,
@@ -54,7 +49,6 @@
 	function atualizarFrete() {
 		var CEPCarrinho = $('#CEPCarrinho').val();
 		var CEPCompCarrinho = $('#CEPCompCarrinho').val();
-
 		$('#atualizandoCEP').html('Atualizando...');
 		$.post('/_pages/carrinhoEditar.php', {
 			postidcarrinho:'<?= $IDCarrinho ?>',
@@ -66,21 +60,16 @@
 		function(dataCarrinho) {
 			$('#cartData').html(dataCarrinho);
 		});
-
 		$('#atualizandoCEP').html('');
-
 		return false;
 	}
     
-  /**
-	 * Evandro Cupom de desconto teste 09-06-17
-	 */
+	//Cupom
 	var IDParceiro = <?php if (!empty($dadosLogin['ID']) && $dadosLogin['ID'] > 0) { echo $dadosLogin['ID']; } else{ echo 'null'; } ?>;
 	function enviarCupom() {
 		var getCupom = $('#Cupom').val();
-		console.log('Cupom enviado', IDParceiro, getCupom);
 		$.ajax({
-			url: '/carrinho/utilizarcupom',
+			url: 'https://<?= $URISite ?>/v1/carrinho/utilizarcupom',
 			type: 'POST',
 			data: {
 				'CarrinhoID': '<?= $IDCarrinho ?>',
@@ -89,9 +78,11 @@
 			}
 		}).done(function (data) {
 			console.log('Cupom adicionado', data);
+			return true;
 		}).fail(function (data) {
 			console.log("Erro ao adicionar o cupom", data);
 		});
+		return false;
 	}
 </script>
 
@@ -117,7 +108,6 @@
 <?php if (!empty($IDCarrinho) && $IDCarrinho > 0) { ?>
 	<script type="text/javascript">
 		$('#cartData').html('<?= $esperaResultado ?>');
-
 		$.post('/_pages/carrinhoEditar.php', {
 			postidcarrinho:'<?= $IDCarrinho ?>',
 			postcarrinho:'<?= md5("editCarrinho") ?>',
@@ -153,9 +143,8 @@
 							<p class="sub-title">Informe o código</p>
 						</div>
 						<div class="box-form">
-							<input class="textbox" type="text" name="Cupom" id="Cupom" maxlength="20"  /><!--
-							--><button type="submit" class="btn">Enviar</button>
-							<i id=""></i>
+							<input class="textbox" type="text" name="Cupom" id="Cupom" maxlength="20" /><!--
+							--><button id="addCupom" type="submit" class="btn">Enviar</button>
 						</div>
 					</form>
 				</div>
