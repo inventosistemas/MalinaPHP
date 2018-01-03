@@ -267,7 +267,9 @@
 					$indexEmEstoque = array_search("0", array_column($dadosProduto['Skus'], 'Disponibilidade'));
 					$indexSobEncomenda = array_search("1", array_column($dadosProduto['Skus'], 'Disponibilidade'));
 					$indexIndisponivel = array_search("2", array_column($dadosProduto['Skus'], 'Disponibilidade'));
-					if ($indexEmEstoque !== false) {
+                                        $indexEsgotado = $dadosProduto['Esgotado'];
+					
+                                        if ($indexEmEstoque !== false) {
 						echo "<h6 class=\"stock\">Em estoque</h6>";
 					} elseif ($indexSobEncomenda !== false) {
 						echo "<h6 class=\"stock\">Sob encomenda</h6>";
@@ -275,7 +277,7 @@
 				?>
 				<h5 id="resultCart"></h5>
 				<?php
-					if ($indexEmEstoque === false && $indexSobEncomenda === false) // nao retornou em estoque nem sobencomenda
+					if (($indexEmEstoque === false && $indexSobEncomenda === false) || ($indexEsgotado === true)) // nao retornou em estoque nem sobencomenda
 					{
 				?>
 					<div class="box-btn">
