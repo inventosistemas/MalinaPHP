@@ -664,7 +664,7 @@
 												foreach ((array) $itens as $item) {
 													if ($i != 1) echo "<div class=\"line-bet\"></div>";
 											?>
-												<div class="conta-painel-entrega">Entrega <?= $i ?> de <?= count($itens) ?> - Entregue por <span><?= $item['Fornecedor'] ?></span></div>
+												<div class="conta-painel-entrega">Entrega <?= $i ?> de <?= count($itens) ?> - Entregue por <span>Malina Beauty</span></div>
 												<div class="conta-checkpoint">
 													<div class="row">
 														<div class="linha">
