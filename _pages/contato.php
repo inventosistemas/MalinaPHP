@@ -91,7 +91,7 @@
 				<input class="form-control" placeholder="E-mail" type="email" name="contEmail" id="contEmail" required="required">
 			</div>
 			<div class="form-group input-icone">
-				<input class="form-control" placeholder="Telefone (00) 0000-0000" type="text" name="contTelefone" id="contTelefone" maxlength="15" required="required">
+				<input class="form-control ip-phone" placeholder="Telefone (00) 0000-0000" type="text" name="contTelefone" id="contTelefone" maxlength="15" required="required">
 			</div>
 			<div class="form-group input-icone">
 				<textarea class="form-control" placeholder="Mensagem" name="contMensagem" id="contMensagem" required="required"></textarea>
@@ -122,10 +122,5 @@
 		options = { fieldMapping: meus_campos };
 		RdIntegration.integrate('19be3ce6a7bd0b40fbe376160c87784f', 'Formulario_Atendimento_Contato', options); 
 		</script>
-		<script>
-			jQuery(function($){
-				$("#contTelefone").mask("(99) 99999999?9");
-			});
-		</script> 
 	</div>
 </section>

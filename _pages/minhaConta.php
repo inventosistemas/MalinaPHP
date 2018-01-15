@@ -989,13 +989,13 @@
 								<div class="form-group row">
 									<label class="control-label col-sm-3">Telefone</label>
 									<div class="col-sm-9 col-md-6">
-										<input type="text" name="cadTelefoneMC" id="cadTelefoneMC" class="form-control" placeholder="(00) 0000-0000" maxlength="15" required="required" />
+										<input type="text" name="cadTelefoneMC" id="cadTelefoneMC" class="form-control ip-phone" placeholder="(00) 0000-0000" maxlength="15" required="required" />
 									</div>
 								</div>
 								<div class="form-group row">
 									<label class="control-label col-sm-3">Data de nascimento</label>
 									<div class="col-sm-9 col-md-6">
-										<input type="text" name="cadDtNascimentoMC" id="cadDtNascimentoMC" class="form-control" placeholder="DD/MM/AAAA" maxlength="10" required="required" />
+										<input type="text" name="cadDtNascimentoMC" id="cadDtNascimentoMC" class="form-control ip-date" placeholder="DD/MM/AAAA" maxlength="10" required="required" />
 									</div>
 								</div>
 								<div class="form-group row">
@@ -1020,7 +1020,7 @@
 									<label class="control-label col-sm-3">CEP</label>
 									<div class="col-sm-9 col-md-6">
 										<div class="input-group">
-											<input name="endPrinCEPMC" id="endPrinCEPMC" type="text" placeholder="CEP" maxlength="9" class="form-control" required="required"/>
+											<input name="endPrinCEPMC" id="endPrinCEPMC" type="text" placeholder="CEP" maxlength="9" class="form-control ip-cep" required="required"/>
 											<span class="input-group-addon"><a href="javascript:obterEnderecoMC();">Buscar endereço</a></span>
 										</div>
 										<span id="resultCEPPrincipalMC"></span>
@@ -1102,13 +1102,6 @@
 
 				</div>
 			</div>
-			<script>
-				jQuery(function($){
-					$("#cadDtNascimentoMC").mask("99/99/9999");
-					$("#cadTelefoneMC").mask("?(99) 999999999");
-					$("#endPrinCEPMC").mask("99999-999");
-				});
-			</script>
 		</div>
 	</section>
 
