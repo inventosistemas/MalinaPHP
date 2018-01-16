@@ -94,7 +94,7 @@ if (!empty($phpPost['postenviarcadcompleto']) && $phpPost['postenviarcadcompleto
     }
     elseif (trim($phpPost['postlogradouro']) == "")
     {
-        echo "!!Por favor informe o CEP e clique em \"Buscar endereço\"";
+        echo "!!Por favor informe o logradouro.";
     }
     elseif (trim($phpPost['postendnumero']) == "")
     {
