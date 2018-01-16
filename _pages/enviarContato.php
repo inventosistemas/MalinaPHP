@@ -11,7 +11,7 @@ if (!empty($phpPost['postcontato']) && $phpPost['postcontato'] == md5("enviarCon
     {
         echo "!!Por favor informe um endereço de e-mail válido.";
     }
-    elseif (!preg_match("/^\([0-9]{2}\) [0-9]{4,5}[0-9]{4}$/", $phpPost['contTelefone']))
+    elseif (!preg_match("/^\([0-9]{2}\) [0-9]{4}[0-9]{4,5}$/", $phpPost['contTelefone']))
     {
         echo "!!Por favor informe o tefone no formato (00) 0000-0000.";
     }

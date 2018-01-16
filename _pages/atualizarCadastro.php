@@ -24,7 +24,7 @@ if (!empty($phpPost['postenviarcadbasico']) && $phpPost['postenviarcadbasico'] =
         echo "!!Por favor informe a data de nascimento no formato DD/MM/AAAA.";
     }
     elseif ((!preg_match("/^\([0-9]{2}\) [0-9]{8,9}$/", $phpPost['posttelefone'])) &&
-            (!preg_match("/^\([0-9]{2}\) [0-9]{4,5}-[0-9]{4}$/", $phpPost['posttelefone'])))
+            (!preg_match("/^\([0-9]{2}\) [0-9]{4}-[0-9]{4,5}$/", $phpPost['posttelefone'])))
     {
         echo "!!Por favor informe o tefone no formato (00) 0000-0000.";
     }
@@ -67,7 +67,7 @@ if (!empty($phpPost['postenviarcadcompleto']) && $phpPost['postenviarcadcompleto
     {
         echo "!!Por favor informe um endereço de e-mail válido.";
     }
-    elseif ((!preg_match("/^\([0-9]{2}\) [0-9]{4,5}-[0-9]{4}$/", $phpPost['posttelefone'])) &&
+    elseif ((!preg_match("/^\([0-9]{2}\) [0-9]{4}-[0-9]{4,5}$/", $phpPost['posttelefone'])) &&
             (!preg_match("/^\([0-9]{2}\) [0-9]{8,9}$/", $phpPost['posttelefone'])))
     {
         echo "!!Por favor informe o tefone no formato (00) 0000-0000.";
@@ -94,7 +94,7 @@ if (!empty($phpPost['postenviarcadcompleto']) && $phpPost['postenviarcadcompleto
     }
     elseif (trim($phpPost['postlogradouro']) == "")
     {
-        echo "!!Por favor informe o logradouro.";
+        echo "!!Por favor informe o CEP e clique em \"Buscar endereço\"";
     }
     elseif (trim($phpPost['postendnumero']) == "")
     {
