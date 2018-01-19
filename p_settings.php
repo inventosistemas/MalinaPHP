@@ -135,7 +135,7 @@ function sendRest(string $url, array $dados, string $metodo)
     $response = curl_exec($ch);
     
     $retornoArray = json_decode($response, TRUE);
-    
+    curl_close($ch);
     return $retornoArray;
 }
 function formatar_moeda(float $valor)

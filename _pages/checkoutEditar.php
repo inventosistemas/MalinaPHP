@@ -117,11 +117,13 @@
 		$indexBoleto = array_search("0", array_column($parcelamentoSubTotal, 'Numero'));
 
 		$parcelaBoleto = $parcelamentoSubTotal[$indexBoleto];
+               
 ?>
 	<div class="row">
 		<div class="col-sm-6">Subtotal: </div>
 		<div class="col-sm-6 text-right"><?= formatar_moeda($carrinho['SubTotal']) ?></div>
 	</div>
+       
 <?php
 	if (!empty($phpPost['posttipopagto']) && $phpPost['posttipopagto'] == "2") {
 ?>
