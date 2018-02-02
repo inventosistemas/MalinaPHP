@@ -4,7 +4,7 @@ if (!defined('HoorayWeb'))
     die;
 }
 define ('URLSite', 'http://localhost:8085/'); 
-define ('URLWebAPI', 'http://qaswamalina.inventosistemas.com.br/'); // 'http://wamalina.inventosistemas.com.br/' ); // 'http://localhost:34191/' https://wamalina.inventosistemas.com.br/
+define ('URLWebAPI', 'http://painfulwebapi.inventosistemas.com.br/'); // qaswamalina.inventosistemas.com.br'http://wamalina.inventosistemas.com.br/' ); // 'http://localhost:34191/' https://wamalina.inventosistemas.com.br/ // painfulwebapi.inventosistemas.com.br 
 
 $endPoint = ['token'           => URLWebAPI . "Token",
             'login'            => URLWebAPI . "v1/login/",

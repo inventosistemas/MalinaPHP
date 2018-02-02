@@ -181,6 +181,7 @@
 				<div class="inner-upper">
 					<div class="midias-up col-xs-3 col-md-3">
 						<?php
+                                                       
 							foreach ((array) $footerData as $socialFt) :
 								if($socialFt['Descricao'] == 'Social') :
 									foreach ((array) $socialFt['Itens'] as $socialItem) :

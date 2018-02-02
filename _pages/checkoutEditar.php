@@ -370,7 +370,7 @@
 				?>            
 					<div class="col-md-6 col-sm-12">
 						<div class="panel panel-default">
-							<div class="panel-heading">PEDIDO № <?= $finalizarPedido['ID'] ?></div>
+							<div class="panel-heading">PEDIDO № <?= $finalizarPedido['Numero'] ?></div>
 							<div class="panel-body ordem-pagamento-concluido-pedido">
 								Acabamos de enviar os detalhes do pedido para:
 								<span><?= $dadosLoginCK['Email'] ?></span>
