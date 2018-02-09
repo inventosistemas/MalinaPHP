@@ -605,6 +605,9 @@
 		case "marketplace" :
 			include_once ("_pages/marketplace.php");
 			break;
+                 case "troca.php" :
+			include_once ("_pages/troca.php");
+			break;
 
 		default:
 			include_once ("_pages/404.php");
@@ -664,8 +667,10 @@
 							</div>
 							<div class="box-icon address">
 								<div class="icon"><img src="/images/site/icones/elements/icon-address.png" alt="Endereço"></div>
-								<div class="icon-text"><span><?= $endCadastral['Enderecos'][0]['Logradouro'] . ", " . $endCadastral['Enderecos'][0]['Numero'] 
-				. " - " . $endCadastral['Enderecos'][0]['Cidade']['Nome'] . " - " . $endCadastral['Enderecos'][0]['Cidade']['Estado']['Sigla'] . " | CEP: " . mascara($endCadastral['Enderecos'][0]['CEP'], "#####-###") ?></span></div>
+								<div class="icon-text"><span><?= $endCadastral['Enderecos'][0]['Logradouro'] . ", " . $endCadastral['Enderecos'][0]['Numero'] . " - " . $endCadastral['Enderecos'][0]['Cidade']['Nome'] . " - " . $endCadastral['Enderecos'][0]['Cidade']['Estado']['Sigla'] . " | CEP: " . mascara($endCadastral['Enderecos'][0]['CEP'], "#####-###") ?></span></div>
+                                                                <br>
+                                                                <br>
+                                                                <div class="icon-text"><a href="http://localhost:8085/troca.php">Trocas e Devoluções</a>
 							</div>
 						</nav>
 					</div>

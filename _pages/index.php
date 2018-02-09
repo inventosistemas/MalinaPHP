@@ -155,8 +155,9 @@
 
 	<?php
 		$dadosEmpresa = getRest(str_replace("{IDParceiro}","1031", $endPoint['dadoscadastrais']));
-		$endCadastral = getRest(str_replace("{IDParceiro}","1031", $endPoint['endcadastral']));
+                $endCadastral = getRest(str_replace("{IDParceiro}","1031", $endPoint['endcadastral']));
 		$footerData = getRest($endPoint['rodape']);
+                 
 	?>
 
 	<!-- Master Header -->
@@ -650,8 +651,11 @@
 							</div>
 							<div class="box-icon address">
 								<div class="icon"><img src="/images/site/icones/elements/icon-address.png" alt="Endereço"></div>
-								<div class="icon-text"><span><?= $endCadastral['Enderecos'][0]['Logradouro'] . ", " . $endCadastral['Enderecos'][0]['Numero'] 
-				. " - " . $endCadastral['Enderecos'][0]['Cidade']['Nome'] . " - " . $endCadastral['Enderecos'][0]['Cidade']['Estado']['Sigla'] . " | CEP: " . mascara($endCadastral['Enderecos'][0]['CEP'], "#####-###") ?></span></div>
+								<div class="icon-text"><span><?= $endCadastral['Enderecos'][0]['Logradouro'] . ", " . $endCadastral['Enderecos'][0]['Numero'] . " - " . $endCadastral['Enderecos'][0]['Cidade']['Nome'] . " - " . $endCadastral['Enderecos'][0]['Cidade']['Estado']['Sigla'] . " | CEP: " . mascara($endCadastral['Enderecos'][0]['CEP'], "#####-###") ?></span></div>
+                                                               
+							</div>
+                                                    
+                                                  
 							</div>
 						</nav>
 					</div>
