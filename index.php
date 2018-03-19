@@ -796,7 +796,7 @@
 						<div role="tabpanel" class="tab-pane" id="tab-cadastre">
 								<form name="cadForm" id="cadForm" method="post" action="/">
 								<div class="box-ipt">
-									<input type="text" name="cadNome" placeholder="Nome" required="required">
+									<input type="text" name="cadNome" placeholder="Nome Completo" required="required">
 								</div>
 								<div class="box-ipt">
 									<input type="email" name="cadEmail" placeholder="E-mail" required="required">
