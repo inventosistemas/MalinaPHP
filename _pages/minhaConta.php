@@ -315,7 +315,7 @@
 							<div class="conta-painel conta-painel-edit-infos">
 								<form name="cadFormBasico" method="post" action="/minhaconta" onsubmit="return alterarCadastroBasico()">
 									<div class="form-group row">
-										<label class="control-label col-sm-3">Nome</label>
+										<label class="control-label col-sm-3">Nome Completo</label>
 										<div class="col-sm-9 col-md-6">
 											<input type="text" name="cadNome" id="cadNome" class="form-control" value="<?= $dadosLogin['Parceiro']['RazaoSocial'] ?>" required="required" />
 										</div>
@@ -975,7 +975,7 @@
 						<div class="conta-painel conta-painel-edit-infos">
 							<form name="cadFormCompleto" method="post" action="/" onSubmit="false">
 								<div class="form-group row">
-									<label class="control-label col-sm-3">Nome</label>
+									<label class="control-label col-sm-3">Nome Completo</label>
 									<div class="col-sm-9 col-md-6">
 										<input type="text" name="cadNomeMC" id="cadNomeMC" class="form-control" placeholder="Nome e sobrenome" value="<?= (!empty($phpPost['cadNome'])) ? $phpPost['cadNome'] : "" ?>" required="required" />
 									</div>
