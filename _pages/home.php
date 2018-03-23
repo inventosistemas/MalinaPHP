@@ -50,17 +50,19 @@
 		<?php endforeach; ?>
 	</section>
 
-        <!-- Content featured -->
+        <!-- Content featured MAIS VENDIDOS-->
 	<section class="content-featured content-slider">
 		<div class="container">
 			<div class="product-slider">
 				<?php
-					$maisVendidosSite = getRest($endPoint['maisvedidos']);
+					$maisVendidosSite = getRest($endPoint['maisvedidos2']);
+                                                                              
 					foreach ((array) $maisVendidosSite[0]['Itens'] as $maisvendidos) :
 						$idProd = $maisvendidos['Produto']['ID'];
+                                                $textoParcelamentoMaisVendidos = $maisvendidos['Produto']['Parcelamento'];
 						$imgProd = $maisvendidos['Produto']['Imagem'];
 						$titleProd = $maisvendidos['Produto']['Descricao'];
-						$brandProd = $maisvendidos['Produto']['Marca']['Descricao'];
+						//$brandProd = $maisvendidos['Produto']['Marca']['Descricao'];
 						$priceProd = $maisvendidos['Produto']['PrecoVigente'];
 						$oldPriceProdArray = $maisvendidos['Produto']['PrecoDePor'];
 						$oldPriceProd = $maisvendidos['Produto']['PrecoDePor']['PrecoDe'];
@@ -85,7 +87,7 @@
 								<h3 class="title">
 									<a href="/produto?id=<?= $idProd ?>" title="<?= $titleProd ?>"><?= $titleProd ?></a>
 								</h3>
-								<span class="brand"><?= $brandProd ?></span>
+								<!-- <span class="brand"><?= $brandProd ?></span> -->
 								<a href="/produto?id=<?= $idProd ?>" class="box-price">
 									<?php 
 										if($oldPriceProdArray && $oldPriceProd > 0) {
@@ -94,8 +96,10 @@
 									?>
 									<?= '<span class="price">' . formatar_moeda($priceProd) . '</span>' ?>
 									<?php
-										$parcelamento = getRest(str_replace(['{IDProduto}', '{valorProduto}'], [$idProd, $priceProd], $endPoint['parcelamento']));
-										echo '<span class="installment">' . end($parcelamento)['Descricao'] . '</span>';
+                                                                      
+										//$parcelamento = getRest(str_replace(['{IDProduto}', '{valorProduto}'], [$idProd, $priceProd], $endPoint['parcelamento']));
+										//echo '<span class="installment">' . end($parcelamento)['Descricao'] . '</span>';
+                                                                                echo '<span class="installment">' . $textoParcelamentoMaisVendidos . '</span>';
 									?>
 								</a>
 								<div class="box-btn">
@@ -113,7 +117,7 @@
 		</div>
 	</section>
         
-	<!-- Content mosaic -->
+	<!-- Content mosaic VITRINE-->
 	<section class="content-mosaic">
 		<div class="container">
 			<div class="inner-mosaic">
@@ -132,14 +136,14 @@
 								echo '</div><div class="m-col">';
 							}
 							$linkVitrine = "#";    
-							if (!empty($showcase['Produto'])) {
+							if (!empty($showcase['CategoriaID'])) {
+								$linkVitrine = "/categoria?id=" . $showcase['CategoriaID'];
+							} elseif (!empty($showcase['MarcaID'])) {
+								$linkVitrine = "/blogpost?id=" . $showcase['MarcaID'];							
+							} elseif (!empty($showcase['BlogID'])) {
+								$linkVitrine = "/blogpost?id=" . $showcase['BlogID'];
+							} elseif (!empty($showcase['Produto'])) {
 								$linkVitrine = "/produto?id=" . $showcase['Produto']['ID'];
-							} elseif (!empty($showcase['BlogArtigo'])) {
-								$linkVitrine = "/blogpost?id=" . $showcase['BlogArtigo']['ID'];
-							} elseif (!empty($showcase['Categoria'])) {
-								$linkVitrine = "/categoria?id=" . $showcase['Categoria']['ID'];
-							} elseif (!empty($showcase['Marca'])) {
-								$linkVitrine = "/blogpost?id=" . $showcase['Marca']['ID'];
 							}
 					?>
 						<div class="<?= $showcaseColumn[$showcaseCounter] ?>">
@@ -160,9 +164,10 @@
 		<div class="container">
 			<?php foreach ((array) $showcaseData as $prodShowcase) : 
 				$idProd = $prodShowcase['Produto']['ID'];
+                                $TextoParcelamento = $prodShowcase['Parcelamento'];
 				$imgProd = $prodShowcase['Produto']['Imagem'];
 				$titleProd = $prodShowcase['Produto']['Descricao'];
-				$brandProd = $prodShowcase['Produto']['Marca']['Descricao'];
+				//$brandProd = $prodShowcase['Produto']['Marca']['Descricao'];
 				$priceProd = $prodShowcase['Produto']['PrecoVigente'];
 				$oldPriceProdArray = $prodShowcase['Produto']['PrecoDePor'];
 				$oldPriceProd = $prodShowcase['Produto']['PrecoDePor']['PrecoDe'];
@@ -186,7 +191,7 @@
 							<h3 class="title">
 								<a href="/produto?id=<?= $idProd ?>" title="<?= $titleProd ?>"><?= $titleProd ?></a>
 							</h3>
-							<span class="brand"><?= $brandProd ?></span>
+							<!--<span class="brand"><?= $brandProd ?></span>-->
 							<a href="/produto?id=<?= $idProd ?>" class="box-price">
 								<?php 
 									if($oldPriceProdArray && $oldPriceProd > 0) {
@@ -195,8 +200,11 @@
 								?>
 								<?= '<span class="price">' . formatar_moeda($priceProd) . '</span>' ?>
 								<?php
-									$parcelamento = getRest(str_replace(['{IDProduto}', '{valorProduto}'], [$idProd, $priceProd], $endPoint['parcelamento']));
-									echo '<span class="installment">' . end($parcelamento)['Descricao'] . '</span>';
+                                                              
+									//$parcelamento = getRest(str_replace(['{IDProduto}', '{valorProduto}'], [$idProd, $priceProd], $endPoint['parcelamento']));
+									//echo '<span class="installment">' . end($parcelamento)['Descricao'] . '</span>';
+                                                                        
+                                                                        echo '<span class="installment">' . $TextoParcelamento . '</span>';
 								?>
 							</a>
 							<div class="box-btn">

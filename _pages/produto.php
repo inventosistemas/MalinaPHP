@@ -288,7 +288,7 @@
 						<button type="button" onclick="atualizarCarrinho()" class="btn-buy">Adicionar ao carrinho</button>
 					</div>
 				<?php
-						$parcelamento = getRest(str_replace(['{IDProduto}', '{valorProduto}'], [$dadosProduto['ID'], $dadosProduto['PrecoVigente']], $endPoint['parcelamento']));
+						$parcelamento = getRest(str_replace(['{IDProduto}', '{valorProduto}'], [$dadosProduto['ID'], $dadosProduto['PrecoVigente']], $endPoint['parcelamento2']));
 				?>
 					<div class="box-installment">
 						<?php
@@ -427,7 +427,7 @@
 									?>
 									<?= '<span class="price">' . formatar_moeda($priceProd) . '</span>' ?>
 									<?php
-										$parcelamento = getRest(str_replace(['{IDProduto}', '{valorProduto}'], [$idProd, $priceProd], $endPoint['parcelamento']));
+										$parcelamento = getRest(str_replace(['{IDProduto}', '{valorProduto}'], [$idProd, $priceProd], $endPoint['parcelamento2']));
 										echo '<span class="installment">' . end($parcelamento)['Descricao'] . '</span>';
 									?>
 								</a>

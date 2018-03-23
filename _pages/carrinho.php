@@ -18,7 +18,24 @@
 	if (!empty($numCarrinho)) {
 		$carrinho = getRest(str_replace("{IDCarrinho}", $numCarrinho, $endPoint['obtercarrinho']));
 	}
+       
+       //Verifico o tempo da sessão na pagina checkout(carrinho) 
+        if ( isset( $_SESSION["sessiontime"] ) ) { 
+	if ($_SESSION["sessiontime"] < time() ) { 
+	    $_SESSION = array();	
+            session_destroy();
+            
+	} else {
+	    $_SESSION["sessiontime"] = time() + 60;
+	}
+} else { 
+        $_SESSION = array();
+        session_destroy();
+	
+}
+        
 ?>
+
 <section class="content-cart">
 	<div class="container">
 		<h4 class="title-page">Carrinho</h4>

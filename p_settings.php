@@ -4,7 +4,7 @@ if (!defined('HoorayWeb'))
     die;
 }
 define ('URLSite', 'http://localhost:8085/'); 
-define ('URLWebAPI', 'qaswamalina.inventosistemas.com.br/'); // qaswamalina.inventosistemas.com.br'http://wamalina.inventosistemas.com.br/' ); // 'http://localhost:34191/' https://wamalina.inventosistemas.com.br/ // painfulwebapi.inventosistemas.com.br 
+define ('URLWebAPI','http://malinawebapiqas.inventosistemas.com.br/'); // http://localhost:34500/ 'http://wamalina.inventosistemas.com.br/' ); // 'http://localhost:34191/' https://wamalina.inventosistemas.com.br/ // painfulwebapi.inventosistemas.com.br 
 
 $endPoint = ['token'           => URLWebAPI . "Token",
             'login'            => URLWebAPI . "v1/login/",
@@ -19,9 +19,10 @@ $endPoint = ['token'           => URLWebAPI . "Token",
             'marcas'           => URLWebAPI . "v1/vitrine/obtermarcas/",
             'marcasdestaque'   => URLWebAPI . "v1/marca/destaque/",
             'detalhesmarca'    => URLWebAPI . "v1/marca/{IDMarca}/obterporid/",
-            'vitrine'          => URLWebAPI . "v1/vitrine/8/",
+            'vitrine'          => URLWebAPI . "v2/vitrine/8/",
             'rodape'           => URLWebAPI . "v1/rodape/",
             'maisvedidos'      => URLWebAPI . "v1/produto/maisvendidos/",
+            'maisvedidos2'     => URLWebAPI . "v2/produto/maisvendidos/",
             'categoria'        => URLWebAPI . "v1/produto/{IDCategoria}/obtercategoria/",
             'prodcategoria'    => URLWebAPI . "v1/produto/{IDCategoria}/produtocategoria/",
             'produto'          => URLWebAPI . "v1/produto/{IDProduto}/",
@@ -40,6 +41,7 @@ $endPoint = ['token'           => URLWebAPI . "Token",
             'blogartigo'       => URLWebAPI . "v1/vitrine/blog/{IDArtigo}/obterdetalheartigo/",
             'blogartigoscat'   => URLWebAPI . "v1/vitrine/blog/{IDBlog}/{IDCategoria}/buscarcategoria/",
             'parcelamento'     => URLWebAPI . "v1/pagamento/{IDProduto}/{valorProduto}/obterparcelamento/",
+            'parcelamento2'    => URLWebAPI . "v2/pagamento/{IDProduto}/{valorProduto}/obterparcelamento/",
             'enderecoporcep'   => URLWebAPI . "v1/cadastro/{CEP}/obterlogradourocep/",
             'delendereco'      => URLWebAPI . "v1/cadastro/{IDEndereco}/deletarendereco/",
             'addendereco'      => URLWebAPI . "v1/cadastro/adicionarendereco/",
@@ -56,6 +58,7 @@ $endPoint = ['token'           => URLWebAPI . "Token",
             'checkout'         => URLWebAPI . "v1/pedido/gravarpedido/",
             'formaspagamento'  => URLWebAPI . "v1/pagamento/{valorCarrinho}/obterformaspagamentoloja2/",
             'parcarrinho'      => URLWebAPI . "v1/pagamento/{IDCarrinho}/{valorCarrinho}/obterparcelamentocarrinho/",
+            'parcarrinho2'     => URLWebAPI . "v2/pagamento/{IDCarrinho}/{valorCarrinho}/obterparcelamentocarrinho/",
             'addwishlist'      => URLWebAPI . "v1/produto/adicionarwishlist/",
             'delwishlist'      => URLWebAPI . "v1/produto/removerwishlist/",
             'obterwishlist'    => URLWebAPI . "v1/produto/{IDLogin}/obterwishlistporlogin/",

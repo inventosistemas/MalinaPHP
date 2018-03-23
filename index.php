@@ -1,10 +1,10 @@
 <?php
 	define('HoorayWeb', TRUE);
-
+        
 	include_once ("p_settings.php");
 	$phpPost = filter_input_array(INPUT_POST);
 	session_start();
-	if (!empty($phpPost['logoff']) && $phpPost['logoff'] == md5("logoff")) // se logoff solicitado, finaliza a sessão e recarrega a pagina
+       	if (!empty($phpPost['logoff']) && $phpPost['logoff'] == md5("logoff")) // se logoff solicitado, finaliza a sessão e recarrega a pagina
 	{
 		session_destroy();
 		Header ("Location: " . URLSite);
@@ -605,8 +605,12 @@
 		case "marketplace" :
 			include_once ("_pages/marketplace.php");
 			break;
-                 case "troca.php" :
+                case "troca.php" :
 			include_once ("_pages/troca.php");
+			break;
+                    
+                    case "limpa.php" :
+			include_once ("_pages/limpa.php");
 			break;
 
 		default:
@@ -931,5 +935,5 @@
 			<?php
 		}
 	?>
-</body>
+ <body> 
 </html>

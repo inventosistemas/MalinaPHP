@@ -1,4 +1,5 @@
 <?php
+
    	$phpPost = filter_input_array(INPUT_POST);
 	define('HoorayWeb', TRUE);
 	include_once ("../p_settings.php");
@@ -11,6 +12,8 @@
 				$dadosCarrinho = ["CarrinhoID" => $phpPost['postidcarrinho'], "CEP" => $endCarrinho['CEP']];
 				$carrinhoComFrete = sendRest($endPoint['fretecarrinho'], $dadosCarrinho, "PUT");
 ?>
+
+
 	<div class="form-group input-icone">
 		<input type="text" class="form-control" name="endDestinatario" id="endDestinatario" placeholder="Nome" value="<?= $endCarrinho['Destinatario'] ?>" disabled="disabled" />
 	</div>
@@ -99,7 +102,7 @@
 	if (!empty($phpPost['posttipoedicao']) && $phpPost['posttipoedicao'] == md5("opcoesPagto")) {
 		$carrinho = getRest(str_replace('{IDCarrinho}', $phpPost['postidcarrinho'], $endPoint['obtercarrinho']));
 
-		$parcelamento = getRest(str_replace(['{IDCarrinho}','{valorCarrinho}'], [$phpPost['postidcarrinho'], $carrinho['Total']], $endPoint['parcarrinho']));
+		$parcelamento = getRest(str_replace(['{IDCarrinho}','{valorCarrinho}'], [$phpPost['postidcarrinho'], $carrinho['Total']], $endPoint['parcarrinho2']));
 
 		echo "<option disabled selected>Número de parcelas</option>";
 		foreach ((array) $parcelamento as $parcela) {
@@ -112,18 +115,16 @@
 	if (!empty($phpPost['posttipoedicao']) && $phpPost['posttipoedicao'] == md5("resumoCarrinho")) {
 		$carrinho = getRest(str_replace("{IDCarrinho}", $phpPost['postidcarrinho'], $endPoint['obtercarrinho']));
 
-		$parcelamentoSubTotal = getRest(str_replace(['{IDCarrinho}','{valorCarrinho}'], [$phpPost['postidcarrinho'], $carrinho['SubTotal']], $endPoint['parcarrinho']));
+		$parcelamentoSubTotal = getRest(str_replace(['{IDCarrinho}','{valorCarrinho}'], [$phpPost['postidcarrinho'], $carrinho['SubTotal']], $endPoint['parcarrinho2']));
 
 		$indexBoleto = array_search("0", array_column($parcelamentoSubTotal, 'Numero'));
 
 		$parcelaBoleto = $parcelamentoSubTotal[$indexBoleto];
-               
 ?>
 	<div class="row">
 		<div class="col-sm-6">Subtotal: </div>
 		<div class="col-sm-6 text-right"><?= formatar_moeda($carrinho['SubTotal']) ?></div>
 	</div>
-       
 <?php
 	if (!empty($phpPost['posttipopagto']) && $phpPost['posttipopagto'] == "2") {
 ?>
@@ -150,7 +151,7 @@
 		if (!empty($phpPost['posttipopagto']) && $phpPost['posttipopagto'] == "2") // se boleto, exibe total com desconto
 		{
 			
-			$parcelamentoSubTotal = getRest(str_replace(['{IDCarrinho}','{valorCarrinho}'], [$phpPost['postidcarrinho'], $carrinho['SubTotal']], $endPoint['parcarrinho']));
+			$parcelamentoSubTotal = getRest(str_replace(['{IDCarrinho}','{valorCarrinho}'], [$phpPost['postidcarrinho'], $carrinho['SubTotal']], $endPoint['parcarrinho2']));
 
 			$indexBoleto = array_search("0", array_column($parcelamentoSubTotal, 'Numero'));
 
@@ -173,8 +174,8 @@
 	</div>
 	<div id="retornoCheckout"></div>
 	<div class="ordem-botao-finalizar-bottom">
-		<button type="button" onclick="finalizarCompra();" class="btn btn-lg btn-primary" id="botaoFinalizar">Finalizar a compra</button>
-	</div
+              <button type="button" onclick="finalizarCompra();" class="btn btn-lg btn-primary" id="botaoFinalizar">Finalizar a compra</button>
+        </div
 <?php
 	}
 
@@ -273,10 +274,11 @@
 				die;
 			}
 		}
-    
-		$dadosPedido = [
-			"LoginID" => $dadosLoginCK['ID'],
-			"EnderecoID"  => $phpPost['tipoEndEntrega'],
+               
+    $dadosPedido = [
+                "ID" => $_SESSION['IDPedidoV'],
+                "LoginID" => $dadosLoginCK['ID'],
+                "EnderecoID"  => $phpPost['tipoEndEntrega'],
 			"PagamentoMetodoFormaID" => ($phpPost['pgFormaPgto'] == "zero") ? $phpPost['pgBandeira'] : "6", // TODO trazer numero da parcela do boleto
 			"ClassificacaoPagto" => 0, // para mkt place, sempre 0 ($phpPost['pgFormaPgto'] == "zero") ? 0 : $phpPost['opNumOpcoes'],
 			"Parcela" => ($phpPost['pgFormaPgto'] == "zero") ? $phpPost['pgParcela'] : "1",
@@ -294,35 +296,33 @@
 			],
 		];
 		
-               $finalizarPedido = sendRest($endPoint['checkout'], $dadosPedido, "POST");
+              $finalizarPedido = sendRest($endPoint['checkout'], $dadosPedido, "POST");
+
+             //Após dar post para gerar o pedido gravo o ID do Pedido na session, caso de erro de pagamento
+             //Usamos mesmo ID pedido para reprocessar o pagamento
+             $_SESSION['IDPedidoV'] = $finalizarPedido['ID'];
+              
               if (empty($finalizarPedido['Gravou'])) {
 			echo "!!";
 
 			if (!is_array($finalizarPedido) && !empty($finalizarPedido)) {
 				echo "<br>" . str_replace(chr(13), "<br>", $finalizarPedido);
 			} else {
-				echo "Erro ao gravar o pedido. <br>Por favor tente novamente.";
+				echo "<br>" . $finalizarPedido['Mensagem'] . " </br>";
+                                
 			}
 			die;
 		}
 
 		if (isset($_SESSION['carrinho'])) {
 			unset($_SESSION['carrinho']);
+                        
 		}
-
+               
 		$indexEndereco = array_search($phpPost['tipoEndEntrega'], array_column($enderecosCK['Enderecos'], 'ID'));
 
 		$enderecoPedido = $enderecosCK['Enderecos'][$indexEndereco];
 ?>
-<!-- Global site tag (gtag.js) - Google Analytics -->
-		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-73086747-1"></script>
-		<script>
-		  window.dataLayer = window.dataLayer || [];
-		  function gtag(){dataLayer.push(arguments);}
-		  gtag('js', new Date());
-
-		  gtag('config', 'UA-73086747-1');
-		</script>
 	<section class="ordem">
 		<div class="container">
 			<h3 class="text-center">
@@ -352,12 +352,14 @@
 									if (($phpPost['pgFormaPgto'] == "zero")) {
 										echo "<span>Valor total do pedido: " . formatar_moeda($carrinhoCK['Total']) . "</span>";
 										echo "<span>" . $phpPost['pgParcela'] . "x sem juros de " . formatar_moeda($carrinhoCK['Total'] / $phpPost['pgParcela']) . "</span>";
+                                                                                  $_SESSION['IDPedidoV'] = 0;
 									} else {
-										$parcelas = getRest(str_replace(['{IDCarrinho}','{valorCarrinho}'], [$phpPost['postidcarrinho'], $carrinhoCK['SubTotal']], $endPoint['parcarrinho']));
+										$parcelas = getRest(str_replace(['{IDCarrinho}','{valorCarrinho}'], [$phpPost['postidcarrinho'], $carrinhoCK['SubTotal']], $endPoint['parcarrinho2']));
 										$indexBoleto = array_search("0", array_column($parcelas, 'Numero')); // busca pela parcela 0 (boleto)
-										$valorBoleto = $parcelas[$indexBoleto]['Valor'] + $carrinhoCK['Frete']- ($carrinhoCK['ValorDesconto'] + $parcelaBoleto['Valor']);
+                                                                            	$valorBoleto = ($parcelas[$indexBoleto]['Valor'] + $carrinhoCK['Frete'])- ($carrinhoCK['ValorDesconto']);
 										echo "<span>Valor total do pedido: " . formatar_moeda($valorBoleto) . "</span>";
 										echo "<div><a href=\"" . $finalizarPedido['RetornoGateway']['Redirect'] . "/print\" target=\"_blank\" class=\"btn btn-lg btn-primary\">Baixar o boleto</a></div>";
+                                                                                $_SESSION['IDPedidoV'] = 0;
 									}
 								?> 
 								<?php } ?>
@@ -388,3 +390,5 @@
 		</div>
 	</section>
 <?php } ?>
+
+

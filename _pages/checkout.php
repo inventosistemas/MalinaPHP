@@ -5,16 +5,18 @@
 		die;
 	} else {
 		$carrinho = getRest(str_replace('{IDCarrinho}', $dadosLogin['CarrinhoId'], $endPoint['obtercarrinho']));
-
+           
 		if (empty($carrinho['Itens'])){
 			include_once ("/_pages/404.php");
 			die;        
 		}
 	}
+               //Seto a variável ID do Pedido que seré enviada pela primeira vez com valor 0
+                $_SESSION['IDPedidoV'] = 0;
 
-	$esperaResultado = '<div align="center"><span class="fa fa-circle-o-notch fa-spin fa-4x fa-fw"></span></div>';
+                $esperaResultado = '<div align="center"><span class="fa fa-circle-o-notch fa-spin fa-4x fa-fw"></span></div>';
 
-	$parcelamento = getRest(str_replace(['{IDCarrinho}','{valorCarrinho}'], [$dadosLogin['CarrinhoId'], $carrinho['Total']], $endPoint['parcarrinho']));
+	$parcelamento = getRest(str_replace(['{IDCarrinho}','{valorCarrinho}'], [$dadosLogin['CarrinhoId'], $carrinho['Total']], $endPoint['parcarrinho2']));
 
 	// Procura pela parcela Zero, referente boleto
 	$parBoleto = array_search("0", array_column($parcelamento, 'Numero')); // busca pela parcela 0 (boleto)
@@ -25,7 +27,30 @@
 	// Endereços de entrega
 	$enderecos = getRest(str_replace("{IDParceiro}", $dadosLogin['Parceiro']['ID'], $endPoint['endcadastral']));
 	$enderecoCarrinho = (!empty($enderecos['Enderecos'][1]['ID'])) ? $enderecos['Enderecos'][1] : $enderecos['Enderecos'][0];
+        
+         //Verifico o tempo da sessão na pagina checkout(carrinho)
+         if ( isset( $_SESSION["sessiontime"] ) ) { 
+	
+            if ($_SESSION["sessiontime"] < time() )
+            { 
+	    
+            session_destroy();	
+          
+            } else 
+                    
+                    {
+                       
+                        $_SESSION["sessiontime"] = time() + 60;
+                    }
+                 
+            } 
+                  else
+                      { 
+                            session_destroy();
+                           
+                      }
 ?>
+
 
 <section class="content-checkpoint">
 	<div class="container">
@@ -39,7 +64,8 @@
 	</div>
 </section>
 <!-- Global site tag (gtag.js) - Google Analytics -->
-		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-73086747-1"></script>
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-73086747-1">
+                </script>
 		<script>
 		  window.dataLayer = window.dataLayer || [];
 		  function gtag(){dataLayer.push(arguments);}
@@ -52,7 +78,7 @@
 	$('#checkpointendpgto').html('<div class="circulo"></div><span>Endereço e Pagamento</span>');
 	$('#checkpointconf').html('<div class="circulo"></div><span>Confirmação</span>');
 </script>
-
+        
 <script type="text/javascript">
 	function GerarHash() {
 		var hash;
@@ -389,6 +415,7 @@ function obterParcelasCartao() {
 						</div>
 				</div>
 			
+                                <input type="hidden" name="pedVendaID" id="pedVendaID" value="<?= $carrinho['PedidoVendaID'] ?>">
 				<input type="hidden" name="codVoucher" id="codVoucher" value="<?= $carrinho['CodigoVoucher'] ?>">
 				<input type="hidden" name="posttipoedicao" id="posttipoedicao" value="<?= md5("finalizarCompra") ?>">
 				<input type="hidden" name="postidusuario" id="postidusuario" value="<?= $dadosLogin['ID'] ?>">
