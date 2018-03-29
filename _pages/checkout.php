@@ -29,26 +29,21 @@
 	$enderecoCarrinho = (!empty($enderecos['Enderecos'][1]['ID'])) ? $enderecos['Enderecos'][1] : $enderecos['Enderecos'][0];
         
          //Verifico o tempo da sessão na pagina checkout(carrinho)
-         if ( isset( $_SESSION["sessiontime"] ) ) { 
-	
-            if ($_SESSION["sessiontime"] < time() )
+         if ( isset( $_SESSION["sessiontime"] ) )
+          { 
+	    if ($_SESSION["sessiontime"] < time() )
             { 
-	    
-            session_destroy();	
-          
-            } else 
-                    
-                    {
-                       
-                        $_SESSION["sessiontime"] = time() + 60;
-                    }
-                 
-            } 
-                  else
-                      { 
-                            session_destroy();
-                           
-                      }
+	      session_destroy();	
+            }
+            else 
+            {
+              $_SESSION["sessiontime"] = time() + 60;
+            }
+          } 
+           else
+           { 
+             session_destroy();
+           }
 ?>
 
 
@@ -361,7 +356,7 @@ function obterParcelasCartao() {
 									</div>
 									<div class="form-group">
 										<div class="input-group">
-											<input name="pgCVC" id="pgCVC" type="password" class="form-control" placeholder="Código de segurança" maxlength="3" autocomplete="off" />
+											<input name="pgCVC" id="pgCVC" type="text" class="form-control" placeholder="Código de segurança" maxlength="3" autocomplete="off" />
 											<span class="input-group-addon">
 												<a data-toggle="tooltip" data-placement="top" title="Por favor informe o código de segurança do cartão.">
 													<i class="glyphicon glyphicon-info-sign"></i>
