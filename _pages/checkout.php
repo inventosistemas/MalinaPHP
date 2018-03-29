@@ -315,7 +315,7 @@ function obterParcelasCartao() {
 										</select>
 									</div>                              
 									<div class="form-group input-icone">
-										<input type="text" name="pgNumCartao" id="pgNumCartao" class="form-control" placeholder="Número no cartão" maxlength="19" autocomplete="off" />
+										<input type="text" name="pgNumCartao" id="pgNumCartao" class="form-control" placeholder="Número no cartão" maxlength="19" autocomplete="nope" />
 										<i class="glyphicon glyphicon-credit-card"></i>
 									</div>
 									<div class="form-group" id="parcelasCartao">
@@ -331,7 +331,7 @@ function obterParcelasCartao() {
 										</div>
 									</div>
 									<div class="form-group">
-											<input type="text" class="form-control" name="pgNomeCartao" id="pgNomeCartao" placeholder="Nome impresso no cartão" autocomplete="off" />
+											<input type="text" class="form-control" name="pgNomeCartao" id="pgNomeCartao" placeholder="Nome impresso no cartão" autocomplete="nope" />
 									</div>
 									<div class="row">
 										<div class="col-xs-12 col-sm-6">
@@ -361,7 +361,7 @@ function obterParcelasCartao() {
 									</div>
 									<div class="form-group">
 										<div class="input-group">
-											<input name="pgCVC" id="pgCVC" type="password" class="form-control" placeholder="Código de segurança" maxlength="3" autocomplete="off" />
+											<input name="pgCVC" id="pgCVC" type="password" class="form-control" placeholder="Código de segurança" maxlength="3" autocomplete="nope" />
 											<span class="input-group-addon">
 												<a data-toggle="tooltip" data-placement="top" title="Por favor informe o código de segurança do cartão.">
 													<i class="glyphicon glyphicon-info-sign"></i>
