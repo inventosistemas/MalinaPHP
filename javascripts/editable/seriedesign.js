@@ -261,6 +261,39 @@
 		});
 
 		/*--------------------------------------------------------
+			VALIDATE INPUT
+		--------------------------------------------------------*/
+		$('.modal form#cadForm button').on('click', function (e) {
+			var form = $(this).closest('form'),
+				iptName = form.find('input[name="cadNome"]'),
+				regName = /\b[A-Za-zÀ-ú][A-Za-zÀ-ú]+,?\s[A-Za-zÀ-ú][A-Za-zÀ-ú]{1,19}\b/gi; // Regex para duas strings, separadas com espaço e com no mínimo 2 caracteres. Aceita acentuação e rejeita números.
+
+			if (!iptName.val()) {
+				if (iptName.siblings('.lbl-form-error').length) {
+					iptName.siblings('.lbl-form-error').remove();
+				}
+			} else {
+				if (!(regName.test(iptName.val()))) {
+					form.removeClass('ready');
+					if (!iptName.siblings('.lbl-form-error').length) {
+						iptName.after('<span class="lbl-form-error">Preencha o campo com seu nome completo</span>');
+					}
+				} else {
+					form.addClass('ready');
+					if (iptName.siblings('.lbl-form-error').length) {
+						iptName.siblings('.lbl-form-error').remove();
+					}
+				}
+			}
+		});
+
+		$('.modal form#cadForm').on('submit', function (e) {
+			if (!$(this).hasClass('ready')) {
+				return false;
+			}
+		});
+
+		/*--------------------------------------------------------
 			DEFAULT INVENTO
 		--------------------------------------------------------*/
 		$(document).ready(function () {
