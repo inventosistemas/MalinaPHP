@@ -23,6 +23,10 @@
 		var wWin = $(window).width();
 		var hHeader = $('#header').height();
 
+		$(window).on('resize', function () {
+			wWin = $(window).width();
+		});
+
 		$(window).scroll(function () {
 			hHeader = $('#header').height();
 		});
@@ -195,7 +199,7 @@
 
 			function iniZoom() {
 				$('.box-zoom img').elevateZoom({
-					gallery: 'box-thumb',
+					gallery: 'box_thumb',
 					cursor: 'pointer',
 					galleryActiveClass: 'active',
 					imageCrossfade: true,
@@ -205,7 +209,22 @@
 					zoomWindowFadeOut: 750,
 				});
 			}
-			iniZoom();
+
+			function mbZoom() {
+				$('#box_thumb a').each(function () {
+					$(this).click(function () {
+						var getNewImg = $(this).data('zoom-image');
+						$('#image_box').find('.box-zoom').empty();
+						$('#image_box').find('.box-zoom').append('<img src="' + getNewImg + '" />');
+					});
+				});
+			}
+
+			if (wWin > 640) {
+				iniZoom();
+			} else {
+				mbZoom();
+			}
 
 			$(window).resize(function () {
 				$('#box-thumb a.active').trigger('click');

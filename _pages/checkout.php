@@ -239,6 +239,9 @@ function obterParcelasCartao() {
 				} else {
 					$('#retornoFinalizarCompra').html(resultadoFinalizarCompra);
 					$('#checkpointconf').html('<div class="circulo active"></div> Confirmação');
+
+					document.body.scrollTop = 0; // For Safari
+					document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
 				}
 			}); 
 		} else {
@@ -251,7 +254,7 @@ function obterParcelasCartao() {
 <section class="ordem">
 	<div class="container">
 		<div id="retornoFinalizarCompra">
-                    <form name="chechoutForm" id="chechoutForm" method="post" action="/checkout" autocomplete="off" onsubmit="false" >
+			<form name="chechoutForm" id="chechoutForm" method="post" action="/checkout" autocomplete="off" onsubmit="false" >
 				<div class="row">
 					<div class="col-md-4">
 						<div class="panel panel-default">

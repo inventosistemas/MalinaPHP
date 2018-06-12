@@ -35,12 +35,14 @@
 			if (dataCarrinho.substring(0,2) == "!!") {
 				$('#resultCart').html(dataCarrinho.substring(2));
 			} else {
-				$('#resultCart').html('Produto adicionado ao seu carrinho.');
+				//$('#resultCart').html('Produto adicionado ao seu carrinho.');
 				$('#previewCart').html(dataCarrinho);
 
 				$('.cart-qtd').each(function(){
 					$(this).html($('#previewCart ul li').length);
 				});
+
+				window.location.href = '/carrinho';
 			}
 		});
 	}
@@ -285,7 +287,7 @@
 					</div>
 				<?php } else { ?>
 					<div class="box-btn">
-						<button type="button" onclick="atualizarCarrinho()" class="btn-buy">Adicionar ao carrinho</button>
+						<button type="button" onclick="atualizarCarrinho()" class="btn-buy">Comprar agora</button>
 					</div>
 				<?php
 						$parcelamento = getRest(str_replace(['{IDProduto}', '{valorProduto}'], [$dadosProduto['ID'], $dadosProduto['PrecoVigente']], $endPoint['parcelamento2']));

@@ -295,21 +295,20 @@
                 "SalvarCartao" => ($phpPost['pgFormaPgto'] == "zero") ? $phpPost['pgSalvarCartao'] : ""
 			],
 		];
-		
-              $finalizarPedido = sendRest($endPoint['checkout'], $dadosPedido, "POST");
 
-             //Após dar post para gerar o pedido gravo o ID do Pedido na session, caso de erro de pagamento
-             //Usamos mesmo ID pedido para reprocessar o pagamento
-             $_SESSION['IDPedidoV'] = $finalizarPedido['ID'];
+		$finalizarPedido = sendRest($endPoint['checkout'], $dadosPedido, "POST");
+
+	 //Após dar post para gerar o pedido gravo o ID do Pedido na session, caso de erro de pagamento
+	 //Usamos mesmo ID pedido para reprocessar o pagamento
+	 $_SESSION['IDPedidoV'] = $finalizarPedido['ID'];
               
-              if (empty($finalizarPedido['Gravou'])) {
+		if (empty($finalizarPedido['Gravou'])) {
 			echo "!!";
 
 			if (!is_array($finalizarPedido) && !empty($finalizarPedido)) {
 				echo "<br>" . str_replace(chr(13), "<br>", $finalizarPedido);
 			} else {
 				echo "<br>" . $finalizarPedido['Mensagem'] . " </br>";
-                                
 			}
 			die;
 		}
@@ -390,5 +389,3 @@
 		</div>
 	</section>
 <?php } ?>
-
-
