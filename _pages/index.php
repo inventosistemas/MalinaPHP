@@ -150,7 +150,7 @@
 				});
 		}
 	</script>
-
+<!-- FaceBook Pixel -->
 <script>
 	! function(f, b, e, v, n, t, s) {
 		if (f.fbq) return;
@@ -181,7 +181,7 @@
 
 	<?php
 		$dadosEmpresa = getRest(str_replace("{IDParceiro}","1031", $endPoint['dadoscadastrais']));
-                $endCadastral = getRest(str_replace("{IDParceiro}","1031", $endPoint['endcadastral']));
+        $endCadastral = getRest(str_replace("{IDParceiro}","1031", $endPoint['endcadastral']));
 		$footerData = getRest($endPoint['rodape']);
                  
 	?>

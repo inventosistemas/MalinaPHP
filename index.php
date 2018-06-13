@@ -4,7 +4,7 @@
 	include_once ("p_settings.php");
 	$phpPost = filter_input_array(INPUT_POST);
 	session_start();
-       	if (!empty($phpPost['logoff']) && $phpPost['logoff'] == md5("logoff")) // se logoff solicitado, finaliza a sessão e recarrega a pagina
+    if (!empty($phpPost['logoff']) && $phpPost['logoff'] == md5("logoff")) // se logoff solicitado, finaliza a sessão e recarrega a pagina
 	{
 		session_destroy();
 		Header ("Location: " . URLSite);
@@ -152,16 +152,16 @@
 				});
 		}
 	</script>
-        <!--Start of Zendesk Chat Script-->
-            <script type="text/javascript">
-            window.$zopim||(function(d,s){var z=$zopim=function(c){
-            z._.push(c)},$=z.s=
-            d.createElement(s),e=d.getElementsByTagName(s)[0];z.set=function(o){z.set.
-            _.push(o)};z._=[];z.set._=[];$.async=!0;$.setAttribute('charset','utf-8');
-            $.src='https://v2.zopim.com/?5QhRFHYYAzDd0mPhfxD7QC94GjTeywpL';z.t=+new Date;$.
-            type='text/javascript';e.parentNode.insertBefore($,e)})(document,'script');
-            </script>
-        <!--End of Zendesk Chat Script-->
+		<!--Start of Zendesk Chat Script-->
+						<script type="text/javascript">
+						window.$zopim||(function(d,s){var z=$zopim=function(c){
+						z._.push(c)},$=z.s=
+						d.createElement(s),e=d.getElementsByTagName(s)[0];z.set=function(o){z.set.
+						_.push(o)};z._=[];z.set._=[];$.async=!0;$.setAttribute('charset','utf-8');
+						$.src='https://v2.zopim.com/?5QhRFHYYAzDd0mPhfxD7QC94GjTeywpL';z.t=+new Date;$.
+						type='text/javascript';e.parentNode.insertBefore($,e)})(document,'script');
+						</script>
+		<!--End of Zendesk Chat Script-->
 
 </head>
 <body>
@@ -604,14 +604,14 @@
 		case "marketplace" :
 			include_once ("_pages/marketplace.php");
 			break;
-                case "troca.php" :
+        case "troca.php" :
 			include_once ("_pages/troca.php");
 			break;
                     
-                    case "limpa.php" :
-			include_once ("_pages/limpa.php");
-			break;
+                    
 
+		
+		
 		default:
 			include_once ("_pages/404.php");
 			break;
@@ -671,9 +671,9 @@
 							<div class="box-icon address">
 								<div class="icon"><img src="/images/site/icones/elements/icon-address.png" alt="Endereço"></div>
 								<div class="icon-text"><span><?= $endCadastral['Enderecos'][0]['Logradouro'] . ", " . $endCadastral['Enderecos'][0]['Numero'] . " - " . $endCadastral['Enderecos'][0]['Cidade']['Nome'] . " - " . $endCadastral['Enderecos'][0]['Cidade']['Estado']['Sigla'] . " | CEP: " . mascara($endCadastral['Enderecos'][0]['CEP'], "#####-###") ?></span></div>
-                                                                <br>
-                                                                <br>
-                                                                <div class="icon-text"><a href="http://localhost:8085/troca.php">Trocas e Devoluções</a>
+                                <br>
+                                <br>
+                                 <div class="icon-text"><a href="http://malinabeauty.com.br/troca.php">Trocas e Devoluções</a>
 							</div>
 						</nav>
 					</div>
@@ -797,7 +797,7 @@
 							</form>
 						</div>
 						<div role="tabpanel" class="tab-pane" id="tab-cadastre">
-							<form name="cadForm" id="cadForm" method="post" action="/">
+							 <form name="cadForm" id="cadForm" method="post" action="/">
 								<div class="box-ipt">
 									<input type="text" name="cadNome" placeholder="Nome Completo" required="required">
 								</div>
@@ -934,5 +934,5 @@
 			<?php
 		}
 	?>
- <body> 
+ </body> 
 </html>
