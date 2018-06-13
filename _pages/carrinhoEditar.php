@@ -95,7 +95,7 @@
 		</ul>
 		<a href="/carrinho#cupomLink" class="m-coupon">Cupom de Desconto</a>
 		<form method="post" action="/carrinho" class="form-btn">
-			<button type="submit" class="btn btn-primary btn-lg">Checkout</button>
+			<button type="submit" class="btn btn-primary btn-lg">Finalizar Compra</button>
 		</form>
 	</div>
 <?php    

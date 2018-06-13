@@ -117,6 +117,7 @@
 				<form method="post" action="/checkout" class="box-agree">
 					<label><input type="checkbox" name="mailling" value="1"><span>Quero receber ofertas e desconto por e-mail</span></label>
 					<div class="box-btn">
+						<a href="/" title="Continuar comprando" class="btn btn-keep"><span>Continuar comprando</span></a>
 						<button type="submit" class="btn btn-lg btn-primary">Finalizar a compra</button>
 					</div>
 				</form>
