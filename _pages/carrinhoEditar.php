@@ -53,6 +53,7 @@
 		} else {
 			session_start();
 			$_SESSION['carrinho'] = $retrornoCarrinho['Dados']['CarrinhoID'];
+			$_SESSION['timeCarrinho'] = time() + 7200;
 		}
 		$carrinho = getRest(str_replace("{IDCarrinho}", $retrornoCarrinho['Dados']['CarrinhoID'], $endPoint['obtercarrinho']));
 ?>

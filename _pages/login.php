@@ -34,7 +34,7 @@ if (!empty($phpPost['postlogin']))
         
         //Criar variável para armazenar tempo logado
                 
-        $_SESSION["sessiontime"] = time() + 60;
+        $_SESSION["sessiontime"] = time() + 600;
         
         //
         $_SESSION['bearer'] = $retornoToken['token_type'] . " " . $retornoToken['access_token'];

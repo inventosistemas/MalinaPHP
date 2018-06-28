@@ -177,18 +177,18 @@
 				$('#countResult').html($('#searchGrid ul li').length + item);
 			});
 
-			//$.post('/_pages/filtro.php', $("#searchFilter").serialize(),
-			//	function (resultadoBusca) {
-			//		$('#searchGrid').html(resultadoBusca);
-			//
-			//		var item = ' item';
-			//		if ($(resultadoBusca).children().length > 1) {
-			//			item = ' itens';
-			//		}
-			//
-			//		//$('#countResult').html($(resultadoBusca).children().length + item);
-			//		$('#countResult').html($('#searchGrid ul li').length + item);
-			//	});
+			$.post('/_pages/filtro.php', $("#searchFilter").serialize(),
+				function (resultadoBusca) {
+					$('#searchGrid').html(resultadoBusca);
+			
+					var item = ' item';
+					if ($(resultadoBusca).children().length > 1) {
+						item = ' itens';
+					}
+			
+					//$('#countResult').html($(resultadoBusca).children().length + item);
+					$('#countResult').html($('#searchGrid ul li').length + item);
+				});
 	}
 </script>
     <!-- Global site tag (gtag.js) - Google Analytics -->

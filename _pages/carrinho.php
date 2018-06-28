@@ -5,7 +5,7 @@
 		$IDCarrinho = $_SESSION['carrinho'];
 	} else {
 		$IDCarrinho = -1;
-	}    
+	}
 	$esperaResultado = '<div class="panel-heading">Atualizando seu carrinho...</div>'
 									 . '<div class="row">'
 									 . '<div class="cart-lf"></div>'
@@ -24,10 +24,13 @@
 		if ($_SESSION["sessiontime"] < time() ) {
 			session_destroy();
 		} else {
-			$_SESSION["sessiontime"] = time() + 60;
+			$_SESSION["sessiontime"] = time() + 600;
 		}
 	} else {
-	 //session_destroy();
+		if (isset($_SESSION["timeCarrinho"]) && $_SESSION["timeCarrinho"] < time() ) {
+			session_destroy();
+			$IDCarrinho = -1;
+		}
  }
 ?>
 
