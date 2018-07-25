@@ -171,7 +171,7 @@
 			PRODUCT GALLERY
 		--------------------------------------------------------*/
 		if ($('#large-img').length) {
-			$('#box-thumb').slick({
+			$('#box_thumb').slick({
 				vertical: true,
 				infinite: false,
 				speed: 500,
@@ -227,10 +227,10 @@
 			}
 
 			$(window).resize(function () {
-				$('#box-thumb a.active').trigger('click');
+				$('#box_thumb a.active').trigger('click');
 			});
 
-			$('#box-thumb a:not(.thumb-video)').on('click', function (e) {
+			$('#box_thumb a:not(.thumb-video)').on('click', function (e) {
 				$('.box-video').fadeOut();
 				$('.box-zoom').fadeIn();
 				$('.zoomContainer').css('display', 'block');
