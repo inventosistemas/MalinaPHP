@@ -118,7 +118,7 @@
 				</div>
 			</div>
 			<div class="content-thumb col-xs-12">
-				<div id="box-thumb">
+				<div id="box_thumb">
 					<?php if($dadosProduto['ImagemPlus1']) : ?>
 						<a class="active" data-image="<?= $dadosProduto['ImagemPlus1'] ?>" data-zoom-image="<?= $dadosProduto['ImagemPlus1'] ?>"><img src="<?= $dadosProduto['ImagemPlus1'] ?>" /></a>
 					<?php endif; ?>

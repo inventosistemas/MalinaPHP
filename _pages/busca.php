@@ -124,8 +124,8 @@
 	<div class="container">
 		<div class="box-breadcrumb">
 			<a href="/">Home</a> <span class="glyphicon glyphicon-menu-right"></span>
-			<?= $infoBreadcrumb[$tipoBusca]['Descricao'] ?> <span class="glyphicon glyphicon-menu-right"></span>
-			<span class="page-title" id="countBusca"><?= (!empty($resultadoBuscaCat)) ? count($resultadoBuscaCat) : "0" ?></span><span class="page-title"> produtos encontrados</span>
+			<?= $infoBreadcrumb[$tipoBusca]['Descricao'] ?> <!--<span class="glyphicon glyphicon-menu-right"></span>
+			<span class="page-title" id="countBusca"><?php //echo (!empty($resultadoBuscaCat)) ? count($resultadoBuscaCat) : "0" ?></span><span class="page-title"> produtos encontrados</span>-->
 		</div>
 	</div>
 </section>
