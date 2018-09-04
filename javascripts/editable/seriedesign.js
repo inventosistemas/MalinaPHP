@@ -214,8 +214,8 @@
 				$('#box_thumb a').each(function () {
 					$(this).click(function () {
 						var getNewImg = $(this).data('zoom-image');
-						$('#image_box').find('.box-zoom').empty();
-						$('#image_box').find('.box-zoom').append('<img src="' + getNewImg + '" />');
+						$('#large-img').find('.box-zoom').empty();
+						$('#large-img').find('.box-zoom').append('<img src="' + getNewImg + '" />');
 					});
 				});
 			}
