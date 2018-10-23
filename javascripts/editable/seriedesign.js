@@ -248,7 +248,7 @@
 		/*-------------------------------------------
 			QUANTITY BUTTON
 		-------------------------------------------*/
-		$('.qty').keyup(function () {
+		$('.qty, .inner-qtd .textbox').keyup(function () {
 			var valor = $(this).val().replace(/[^0-9]+/g, '');
 			if (valor == 0) {
 				$(this).val(1);

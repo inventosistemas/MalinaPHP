@@ -624,11 +624,7 @@ fbq('track', 'PageView');
         case "troca.php" :
 			include_once ("_pages/troca.php");
 			break;
-                    
-                    
 
-		
-		
 		default:
 			include_once ("_pages/404.php");
 			break;
