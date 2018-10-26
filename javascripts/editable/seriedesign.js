@@ -248,14 +248,21 @@
 		/*-------------------------------------------
 			QUANTITY BUTTON
 		-------------------------------------------*/
-		$('.qty, .inner-qtd .textbox').keyup(function () {
-			var valor = $(this).val().replace(/[^0-9]+/g, '');
-			if (valor == 0) {
-				$(this).val(1);
-			} else {
-				$(this).val(valor);
-			}
-		});
+		function iniQtd() {
+			$('.qty, .inner-qtd .textbox').keyup(function () {
+				var valor = $(this).val().replace(/[^0-9]+/g, '');
+				if (valor == 0) {
+					$(this).val(1);
+				} else {
+					$(this).val(valor);
+				}
+			});
+		}
+		iniQtd();
+		setTimeout(function () {
+			$('.qty, .inner-qtd .textbox').off('keyup');
+			iniQtd();
+		}, 1000);
 
 		$('.i-increase').click(function (e) {
 			e.preventDefault();
