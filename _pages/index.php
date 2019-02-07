@@ -670,6 +670,11 @@ fbq('track', 'PageView');
 											if($aboutItem['Descricao'] == 'Malina') {
 							?>
 								<p><?= $aboutItem['Html'] ?></p>
+								<p style="text-align:center;">
+									<a href="https://www.fujioka.com.br/fujioka/nossas-lojas/" title="Fujioka - Distribuidor Oficial" target="_blank">
+										<img src="/images/site/fujioka.png" style="max-height:59px;" width="160" alt="Fujioka - Distribuidor Oficial" />
+									</a>
+								</p>
 							<?php
 											}
 										}
