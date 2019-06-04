@@ -112,7 +112,7 @@
 			sortBy: 'most-recent',
 			tagName: 'instagram_list',
 			userId: 2039819407,
-			accessToken: '2039819407.62f1cc9.ff48d1d3fd8e472c91a2494d34fd2b51',
+			accessToken: '2039819407.62f1cc9.e0db870b38d44d6fac76ab8a8ec03599',
 			resolution: 'low_resolution',
 			template: '<a href="{{link}}" target="_blank" title="{{caption}}" class="photo-i"><div class="inner" style="background-image:url({{image}});"><img src="{{image}}" alt="{{caption}}" /><div class="box-like"><div class="center"><span class="likes">{{likes}}</span><span class="comments">{{comments}}</span></div></div></div></a>',
 			after: setSlick,

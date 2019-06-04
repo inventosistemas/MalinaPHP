@@ -64,6 +64,7 @@
 			"ProdutoCategoriaID" => ($tipoBusca == "categoria") ? $IDCategoria : -1,
 			"ProdutoSubCategoriaID" => -1
 		];
+             
 		$resultadoBuscaCat = sendRest($endPoint['buscaestendida'], $dadosBuscaCat, "POST");
 		$filtros = [];
 		$precos = [];

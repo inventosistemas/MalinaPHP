@@ -4,7 +4,10 @@ if (!defined('HoorayWeb'))
     die;
 }
 define ('URLSite', 'http://localhost:8085/'); 
-define ('URLWebAPI','http://malinawebapiqas.inventosistemas.com.br/'); // http://localhost:34500/ 'http://wamalina.inventosistemas.com.br/' ); // 'http://localhost:34191/' https://wamalina.inventosistemas.com.br/ // painfulwebapi.inventosistemas.com.br 
+define ('URLWebAPI','https://wamalina.inventosistemas.com.br/'); //http://malinawebapiqas.inventosistemas.com.br/
+        // http://localhost:34500/ 'http://wamalina.inventosistemas.com.br/' );
+        // https://wamalina.inventosistemas.com.br/  
+        // 'http://localhost:34191/' https://wamalina.inventosistemas.com.br/ // painfulwebapi.inventosistemas.com.br 
 
 $endPoint = ['token'           => URLWebAPI . "Token",
             'login'            => URLWebAPI . "v1/login/",
