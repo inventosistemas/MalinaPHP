@@ -108,7 +108,7 @@
 		--------------------------------------------------------*/
 		var feed = new Instafeed({
 			get: 'user',
-			limit: '12',
+			limit: '16',
 			sortBy: 'most-recent',
 			tagName: 'instagram_list',
 			userId: 2039819407,
