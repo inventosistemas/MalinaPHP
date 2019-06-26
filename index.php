@@ -1,6 +1,6 @@
 <?php
 	define('HoorayWeb', TRUE);
-        
+
 	include_once ("p_settings.php");
 	$phpPost = filter_input_array(INPUT_POST);
 	session_start();
@@ -69,7 +69,7 @@
 	<link href="/fonts/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 	<link href="/stylesheets/slick.css" rel="stylesheet" type="text/css">
 	<link href="/stylesheets/personalized.css" rel="stylesheet" type="text/css">
-	
+
 	<!-- Global site tag (gtag.js) - Google Analytics -->
 		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-73086747-1"></script>
 		<script>
@@ -163,29 +163,13 @@
 						</script>
 		<!--End of Zendesk Chat Script-->
 
-<!-- Facebook Pixel Code -->
-<script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window,document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '1595148697227535'); 
-fbq('track', 'PageView');
-</script>
-<noscript>
-<img height="1" width="1" src="https://www.facebook.com/tr?id=1595148697227535&ev=PageView&noscript=1"/>
-</noscript>
-<!-- End Facebook Pixel Code -->
-
 </head>
+
 <body>
 
 	<?php
-		$dadosEmpresa = getRest(str_replace("{IDParceiro}","1", $endPoint['dadoscadastrais']));
-		$endCadastral = getRest(str_replace("{IDParceiro}","1", $endPoint['endcadastral']));
+		$dadosEmpresa = getRest(str_replace("{IDParceiro}","2", $endPoint['dadoscadastrais']));
+		$endCadastral = getRest(str_replace("{IDParceiro}","2", $endPoint['endcadastral']));
 		$footerData = getRest($endPoint['rodape']);
 	?>
 
@@ -218,8 +202,8 @@ fbq('track', 'PageView');
 							<?php if (!empty($dadosLogin['ID']) && $dadosLogin['ID'] > 0) :
 									$nomeUsuario = explode(" ", $dadosLogin['Parceiro']['RazaoSocial']);
 							?>
-								<a href="/minhaconta"><span class="icon glyphicon glyphicon-user"></span><span class="hidden-xs hidden-sm">Olá <?= $nomeUsuario[0] ?></span></a> 
-							<?php else : ?>    
+								<a href="/minhaconta"><span class="icon glyphicon glyphicon-user"></span><span class="hidden-xs hidden-sm">Olá <?= $nomeUsuario[0] ?></span></a>
+							<?php else : ?>
 								<a href="#modal-login" data-toggle="modal" id="link-login"><span class="icon glyphicon glyphicon-user"></span><span class="hidden-xs hidden-sm">Login</span></a>
 							<?php endif; ?>
 						</div>
@@ -473,8 +457,8 @@ fbq('track', 'PageView');
 					include_once ("_pages/blogPost.php");
 				}
 			}
-			break;     
-       
+			break;
+
 		case "blogcategoria" :
 			$dadosBlog = getRest($endPoint['blog']);
 
@@ -511,7 +495,7 @@ fbq('track', 'PageView');
 
 			$phpGet = filter_input_array(INPUT_GET);
 			if (!empty($phpGet)) {
-				$IDSecao = $phpGet[array_keys($phpGet)[0]];                
+				$IDSecao = $phpGet[array_keys($phpGet)[0]];
 			}
 
 			if (!isset($IDSecao) || !is_numeric($IDSecao)) {
@@ -561,7 +545,7 @@ fbq('track', 'PageView');
 					include_once ("_pages/busca.php");
 				}
 			}
-			break;                                        
+			break;
 
 		case "produto" :
 				$phpGet = filter_input_array(INPUT_GET);
@@ -604,7 +588,7 @@ fbq('track', 'PageView');
 			} else {
 				include_once ("_pages/404.php");
 			}
-			break;            
+			break;
 
 		case "carrinho" :
 			include_once ("_pages/carrinho.php");
@@ -629,7 +613,7 @@ fbq('track', 'PageView');
 			include_once ("_pages/404.php");
 			break;
 		}
-	?>        
+	?>
 
 	<!-- Master Footer -->
 	<footer id="footer">
@@ -691,7 +675,7 @@ fbq('track', 'PageView');
 								<div class="icon-text"><span><?= $endCadastral['Enderecos'][0]['Logradouro'] . ", " . $endCadastral['Enderecos'][0]['Numero'] . " - " . $endCadastral['Enderecos'][0]['Cidade']['Nome'] . " - " . $endCadastral['Enderecos'][0]['Cidade']['Estado']['Sigla'] . " | CEP: " . mascara($endCadastral['Enderecos'][0]['CEP'], "#####-###") ?></span></div>
                                 <br>
                                 <br>
-                                 <div class="icon-text"><a href="http://malinabeauty.com.br/troca.php">Trocas e Devoluções</a>
+                                 <div class="icon-text"><a href="http://malinabeauty.com.br/troca.php">Política de Troca, Devoluções e Entrega</a>
 							</div>
 						</nav>
 					</div>
@@ -885,7 +869,7 @@ fbq('track', 'PageView');
 							</ul>
 							<a href="/carrinho#cupomLink" class="m-coupon">Cupom de Desconto</a>
 							<form method="post" action="/carrinho" class="form-btn">
-								<button type="submit" class="btn btn-primary btn-lg">Finalizar Compra</button>
+								<button type="submit" class="btn btn-primary btn-lg">Checkout</button>
 							</form>
 						<?php else : ?>
 							<div class="empty-cart">
@@ -903,13 +887,13 @@ fbq('track', 'PageView');
 			$('.cart-qtd').each(function(){
 				$(this).html('<?= count($carrinho['Itens']) ?>');
 			});
-		</script>       
+		</script>
 	<?php else : ?>
 		<script type="text/javascript">
 			$('.cart-qtd').each(function(){
 				$(this).html('0');
 			});
-		</script> 
+		</script>
 	<?php endif; ?>
 
 	<!-- Scripts -->
@@ -947,10 +931,10 @@ fbq('track', 'PageView');
 						$('#postvalormin').val(values[0]);
 						$('#postvalormax').val(values[1]);
 						filtrarBusca(-1);
-					});                
+					});
 				</script>
 			<?php
 		}
 	?>
- </body> 
+ </body>
 </html>
