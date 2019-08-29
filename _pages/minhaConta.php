@@ -1029,7 +1029,7 @@
 								<div class="form-group row">
 									<label class="control-label col-sm-3">Logradouro</label>
 									<div class="col-sm-9 col-md-6">
-										<input type="text" name="endPrinLogradouroMC" id="endPrinLogradouroMC" placeholder="Logradouro"  class="form-control" required="required" />
+										<input type="text" name="endPrinLogradouroMC" id="endPrinLogradouroMC" placeholder="Logradouro"  class="form-control" required="required" disabled />
 									</div>
 								</div>
 								<div class="form-group row">
