@@ -120,7 +120,7 @@
 				'contAssunto': 'Assunto'
 		 };
 		options = { fieldMapping: meus_campos };
-		RdIntegration.integrate('19be3ce6a7bd0b40fbe376160c87784f', 'Formulario_Atendimento_Contato', options); 
+//		RdIntegration.integrate('19be3ce6a7bd0b40fbe376160c87784f', 'Formulario_Atendimento_Contato', options); 
 		</script>
 	</div>
 </section>

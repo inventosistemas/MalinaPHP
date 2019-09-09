@@ -11,21 +11,14 @@ if (!empty($phpPost['postcontato']) && $phpPost['postcontato'] == md5("enviarCon
     {
         echo "!!Por favor informe um endereço de e-mail válido.";
     }
-    elseif (!preg_match("/^\([0-9]{2}\) [0-9]{4}[0-9]{4,5}$/", $phpPost['contTelefone']))
-    {
-        echo "!!Por favor informe o tefone no formato (00) 0000-0000.";
-    }
     else
     {
-        $numTelContato = preg_replace('/\D/', '', $phpPost['contTelefone']);
-        
         $dadosContato = [ "AtendimentoClassificacaoID" => $phpPost["contAssunto"],
                           "Nome" => $phpPost["contNome"],
                           "CpfCnpj"=> $phpPost["contCPFCNPJ"],
                           "NumeroPedido"=> $phpPost["contPedido"], 
                           "Email" => $phpPost["contEmail"],
-                          "DDDTelefone" => substr($numTelContato, 0, 2),
-                          "Telefone" => substr($numTelContato, 2),
+                          "Telefone" => s$phpPost['contTelefone'],
                           "Mensagem" =>  $phpPost["contMensagem"]
             ];
 
