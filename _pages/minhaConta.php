@@ -28,7 +28,7 @@
 
 				case 2 :
 					$enderecoCobranca = $endereco;
-					break;        
+					break;
 			}
 		}
 ?>
@@ -59,7 +59,7 @@
 			});
 
 			return false;
-		}    
+		}
 
 		function trocarSenha() {
 			$('#retornoSenha').html('Alterando senha...');
@@ -77,7 +77,7 @@
 			},
 			function(dataAltSenha) {
 				$('#retornoSenha').html(dataAltSenha);
-			});            
+			});
 
 			document.altSenha.altSenhaAtual.value = '';
 			document.altSenha.altNovaSenha.value = '';
@@ -85,50 +85,90 @@
 		}
 
 		function obterEndereco(tipoEndereco) {
-			var endCEP;
+					var endCEP;
 
-			if (tipoEndereco == 'principal') {
-				$('#resultCEPPrincipal').html('');
-				document.endPrinForm.endPrinLogradouro.value = 'Buscando endereço...';
-				endCEP = $('#endPrinCEP').val();
-			} else {
-				$('#resultCEPEntrega').html('');
-				document.endEntForm.endEntLogradouro.value = 'Buscando endereço...';
-				endCEP = $('#endEntCEP').val();
-			}
+									 
+									  
+																		   
+									
+		   
+									
+																		 
+								   
+	
 
-			$.post('/_pages/atualizarCadastro.php', {
-				postcep:endCEP,
-				postbuscarcep:'<?= md5 ("buscarCep") ?>'
-			},
-			function(data) {
-				if (data.substring(0,2) == "!!") {
+											
+				   
+											
+	 
+				   
+									  
+									   
+													   
+														
+													
+																		
+			 
+													 
+													  
+												  
+																	  
+	  
+			
 					if (tipoEndereco == 'principal') {
-						$('#resultCEPPrincipal').html(data.substring(2));
-						document.endPrinForm.endPrinLogradouro.value = '';
-						document.endPrinForm.endPrinCidade.value = '';
-						document.endPrinForm.endPrinUF.value = '';                        
+						$('#resultCEPPrincipal').html('');
+						document.endPrinForm.endPrinLogradouro.value = 'Buscando endereço...';
+						endCEP = $('#endPrinCEP').val();
+															  
 					} else {
-						$('#resultCEPEntrega').html(data.substring(2));
-						document.endEntForm.endEntLogradouro.value = '';
-						document.endEntForm.endEntCidade.value = '';
-						document.endEntForm.endEntUF.value = '';                        
+						$('#resultCEPEntrega').html('');
+						document.endEntForm.endEntLogradouro.value = 'Buscando endereço...';
+						endCEP = $('#endEntCEP').val();
+															
 					}
-				} else {
-					if (tipoEndereco == 'principal') {
-						var dadosEndereco = data.split("#");
-						document.endPrinForm.endPrinLogradouro.value = dadosEndereco[1];
-						document.endPrinForm.endPrinCidade.value = dadosEndereco[2];
-						document.endPrinForm.endPrinUF.value = dadosEndereco[3];
-					} else {
-						var dadosEndereco = data.split("#");
-						document.endEntForm.endEntLogradouro.value = dadosEndereco[1];
-						document.endEntForm.endEntCidade.value = dadosEndereco[2];
-						document.endEntForm.endEntUF.value = dadosEndereco[3];
-					}
+
+					$.post('/_pages/atualizarCadastro.php', {
+						postcep:endCEP,
+						postbuscarcep:'<?= md5 ("buscarCep") ?>'
+					},
+					function(data) {
+						if (data.substring(0,2) == "!!") {
+							if (tipoEndereco == 'principal') {
+								$('#resultCEPPrincipal').html(data.substring(2));
+								document.endPrinForm.endPrinLogradouro.value = '';
+								document.endPrinForm.endPrinCidade.value = '';
+								document.endPrinForm.endPrinUF.value = '';
+							} else {
+								$('#resultCEPEntrega').html(data.substring(2));
+								document.endEntForm.endEntLogradouro.value = '';
+								document.endEntForm.endEntCidade.value = '';
+								document.endEntForm.endEntUF.value = '';
+							}
+						} else {
+							if (tipoEndereco == 'principal') {
+								var dadosEndereco = data.split("#");
+								document.endPrinForm.endPrinLogradouro.disabled = true;
+								document.endPrinForm.endPrinLogradouro.value = dadosEndereco[1];
+								document.endPrinForm.endPrinCidade.value = dadosEndereco[2];
+								document.endPrinForm.endPrinUF.value = dadosEndereco[3];
+							    if (dadosEndereco[1] == " ")
+									document.endPrinForm.endPrinLogradouro.disabled = false;
+							} else {
+								var dadosEndereco = data.split("#");
+								document.endEntForm.endEntLogradouro.disabled = true;
+								document.endEntForm.endEntLogradouro.value = dadosEndereco[1];
+								document.endEntForm.endEntCidade.value = dadosEndereco[2];
+								document.endEntForm.endEntUF.value = dadosEndereco[3];
+								if (dadosEndereco[1] == " ")
+									document.endEntForm.endEntLogradouro.disabled = false;
+							}
+						}
+					});
 				}
-			});
-		}
+	  
+   
+
+
 
 		function alterarEndereco(tipoEndereco) {
 			if (tipoEndereco == 'principal') {
@@ -198,12 +238,12 @@
 					} else {
 						$('#retornoEnderecoEntrega').html(dataCadastroEndereco);
 						document.endEntForm.onsubmit = true;
-						document.endEntForm.submit();                        
+						document.endEntForm.submit();
 					}
 				}
 			});
 
-			return false;        
+			return false;
 		}
 
 		function apagarEndereco(idEndereco) {
@@ -219,7 +259,7 @@
 				} else {
 					$('#retornoApagarEndereco').html(dataDeleteEndereco);
 					document.excluirEnd.onsubmit = true;
-					document.excluirEnd.submit();                       
+					document.excluirEnd.submit();
 				}
 			});
 
@@ -278,7 +318,7 @@
 									<div class="col-sm-9">
 										<p class="form-control-static"><?= date_format(date_create($dadosLogin['Parceiro']['DataNascimento']), "d/m/Y") ?></p>
 									</div>
-								</div>                        
+								</div>
 								<div class="form-group">
 									<label class="control-label col-sm-3">Telefone</label>
 									<div class="col-sm-9">
@@ -308,7 +348,7 @@
 									<button href="#inf-conta-edit-pass" data-toggle="tab" class="btn btn-default">Alterar senha</button>
 								</div>
 							</div>
-						</div>         
+						</div>
 
 						<!-- pane edit conta info -->
 						<div class="tab-pane" id="inf-conta-edit">
@@ -358,7 +398,7 @@
 									<input type="hidden" name="cadastroBasico" value="<?= md5("editarcadastro") ?>">
 								</form>
 
-								
+
 								<script type="text/javascript">
 									var meus_campos = {
 										'cadEmailMC': 'email',
@@ -376,7 +416,7 @@
 										'cadSexoMC': 'sexo'
 									 };
 									options = { fieldMapping: meus_campos };
-									RdIntegration.integrate('19be3ce6a7bd0b40fbe376160c87784f', 'Formulário de Cadastro Dados Pessoais', options);  
+									RdIntegration.integrate('19be3ce6a7bd0b40fbe376160c87784f', 'Formulário de Cadastro Dados Pessoais', options);
 								</script>
 								<!-- Evandro RD Station 02/06/2017 -->
 							</div>
@@ -432,7 +472,7 @@
 														echo "<div class=\"col-md-2\"><a href=\"#meus-end-delete\" data-toggle=\"tab\"><span class=\"glyphicon glyphicon-remove\"></span> Excluir</a></div>";
 													}
 												?>
-											</div>                                    
+											</div>
 										</div>
 									</form>
 								</div>
@@ -587,7 +627,7 @@
 									</div>
 								</form>
 							</div>
-						</div>               
+						</div>
 
 						<!-- pane meus enderecos delete -->
 						<div class="tab-pane" id="meus-end-delete">
@@ -620,7 +660,7 @@
 									</form>
 								</div>
 							</div>
-						</div>                
+						</div>
 
 						<!-- pane meus pedidos -->
 						<div class="tab-pane" id="meus-ped">
@@ -693,7 +733,7 @@
 															</div>
 														</div>
 													</div>
-												</div>                                        
+												</div>
 											<?php foreach ((array) $item['Itens'] as $produto) { ?>
 												<div class="row">
 													<div class="col-md-8">
@@ -781,7 +821,7 @@
 									<div class="panel conta-painel">
 										<div class="col-md-12">
 											Sua Wish List ainda não possui nenhum produto.
-										</div>                        
+										</div>
 									</div>
 								<?php } ?>
 							</div>
@@ -889,31 +929,36 @@
 		}
 
 		function obterEnderecoMC() {
-			var endCEPMC;
+					var endCEPMC;
 
-			$('#resultCEPPrincipalMC').html('');
-			document.cadFormCompleto.endPrinLogradouroMC.value = 'Buscando endereço...';
-			endCEPMC = $('#endPrinCEPMC').val();
+					$('#resultCEPPrincipalMC').html('');
+					document.cadFormCompleto.endPrinLogradouroMC.value = 'Buscando endereço...';
+					endCEPMC = $('#endPrinCEPMC').val();
 
-			$.post('/_pages/atualizarCadastro.php', {
-				postcep:endCEPMC,
-				postbuscarcep:'<?= md5 ("buscarCep") ?>'
-			},
-			function(data) {
-				if (data.substring(0,2) == "!!") {
-					$('#resultCEPPrincipalMC').html(data.substring(2));
-					document.cadFormCompleto.endPrinCEPMC.value = '';
-					document.cadFormCompleto.endPrinLogradouroMC.value = '';
-					document.cadFormCompleto.endPrinCidadeMC.value = '';
-					document.cadFormCompleto.endPrinUFMC.value = '';                        
-				} else {
-					var dadosEndereco = data.split("#");
-					document.cadFormCompleto.endPrinLogradouroMC.value = dadosEndereco[1];
-					document.cadFormCompleto.endPrinCidadeMC.value = dadosEndereco[2];
-					document.cadFormCompleto.endPrinUFMC.value = dadosEndereco[3];
-				}
-			});
-		}        
+					$.post('/_pages/atualizarCadastro.php', {
+						postcep:endCEPMC,
+						postbuscarcep:'<?= md5 ("buscarCep") ?>'
+					},
+					function(data) {
+						if (data.substring(0,2) == "!!") {
+							$('#resultCEPPrincipalMC').html(data.substring(2));
+							document.cadFormCompleto.endPrinCEPMC.value = '';
+							document.cadFormCompleto.endPrinLogradouroMC.value = '';
+							document.cadFormCompleto.endPrinCidadeMC.value = '';
+							document.cadFormCompleto.endPrinUFMC.value = '';
+						} else {
+							var dadosEndereco = data.split("#");
+		                    document.cadFormCompleto.endPrinLogradouroMC.disabled = true;
+							document.cadFormCompleto.endPrinLogradouroMC.value = dadosEndereco[1];
+							document.cadFormCompleto.endPrinCidadeMC.value = dadosEndereco[2];
+							document.cadFormCompleto.endPrinUFMC.value = dadosEndereco[3];
+
+							if (dadosEndereco[1] == " ")
+									document.cadFormCompleto.endPrinLogradouroMC.disabled = false;
+
+						}
+					});
+		}
 	</script>
 
 	<section class="content-login">
@@ -922,19 +967,19 @@
 			<div class="row">
 				<div class="col-md-3">
 					<ul class="nav tabs-left">
-						<?php 
+						<?php
 							if (!empty($phpPost['cadastroResult']) && $phpPost['cadastroResult'] == md5("cadastro")) {
 								$activeMenuLogin = "";
 								$activeDivLogin = "";
 								$activeMenuCadastro = " class=\"active\"";
-								$activeDivCadastro = " active";                        
+								$activeDivCadastro = " active";
 							} else {
 								$activeMenuLogin = " class=\"active\"";
 								$activeDivLogin = " active";
 								$activeMenuCadastro = "";
 								$activeDivCadastro = "";
 							}
-						?>  
+						?>
 						<li<?= $activeMenuLogin ?>><a href="#inf-login" data-toggle="tab">Faça Login</a></li>
 						<li<?= $activeMenuCadastro ?>><a href="#inf-cadastro" data-toggle="tab">Cadastre-se</a></li>
 						<li><a href="#inf-senha" data-toggle="tab">Esqueci minha senha</a></li>
@@ -979,7 +1024,7 @@
 									<div class="col-sm-9 col-md-6">
 										<input type="text" name="cadNomeMC" id="cadNomeMC" class="form-control" placeholder="Nome e sobrenome" value="<?= (!empty($phpPost['cadNome'])) ? $phpPost['cadNome'] : "" ?>" required="required" />
 									</div>
-								</div>                            
+								</div>
 								<div class="form-group row">
 									<label class="control-label col-sm-3">E-mail</label>
 									<div class="col-sm-9 col-md-6">
@@ -1009,13 +1054,13 @@
 											?>
 										</select>
 									</div>
-								</div>                            
+								</div>
 								<div class="form-group row">
 									<label class="control-label col-sm-3" id="cadLabelCNPJ">CPF/CNPJ</label>
 									<div class="col-sm-9 col-md-6">
 										<input type="text" name="cadCNPJMC" id="cadCNPJMC" class="form-control" placeholder="CPF/CNPJ" required="required" />
 									</div>
-								</div>                            
+								</div>
 								<div class="form-group row">
 									<label class="control-label col-sm-3">CEP</label>
 									<div class="col-sm-9 col-md-6">
@@ -1054,7 +1099,7 @@
 									<label class="control-label col-sm-3">Cidade</label>
 									<div class="col-sm-9 col-md-6">
 										<input type="text" name="endPrinCidadeMC" id="endPrinCidadeMC" disabled="disabled" placeholder="Cidade" class="form-control" required="required" />
-									</div>                                
+									</div>
 								</div>
 								<div class="form-group row">
 									<label class="control-label col-sm-3">Estado</label>
